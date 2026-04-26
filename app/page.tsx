@@ -56,7 +56,7 @@ export default function HomePage() {
         {/* Grid background */}
         <div className="absolute inset-0 grid-pattern opacity-60 pointer-events-none" />
         {/* Radial glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-radial from-blue-100/60 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-200 h-125 bg-gradient-radial from-blue-100/60 via-transparent to-transparent pointer-events-none" />
 
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="flex flex-col items-center text-center">
@@ -71,7 +71,7 @@ export default function HomePage() {
             </div>
 
             {/* Headline */}
-            <h1 className="animate-fade-up delay-100 font-[family-name:var(--font-syne)] text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-slate-900 mb-6 leading-[0.88]">
+            <h1 className="animate-fade-up delay-100 font-(family-name:--font-syne) text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-slate-900 mb-6 leading-[0.88]">
               BUILDING<br/>
               <span className="gradient-text">TOMORROW</span><br/>
               TODAY.
@@ -134,9 +134,9 @@ export default function HomePage() {
           {stats.map((stat, i) => (
             <div
               key={i}
-              className="bg-white border border-slate-200 rounded-[1.5rem] p-8 text-center shadow-sm hover:shadow-md hover:border-blue-200 transition-all card-hover"
+              className="bg-white border border-slate-200 rounded-3xl p-8 text-center shadow-sm hover:shadow-md hover:border-blue-200 transition-all card-hover"
             >
-              <p className="font-[family-name:var(--font-syne)] text-3xl md:text-4xl font-black text-slate-900 mb-2">
+              <p className="font-(family-name:--font-syne) text-3xl md:text-4xl font-black text-slate-900 mb-2">
                 {stat.value}
               </p>
               <p className="text-xs font-bold uppercase tracking-widest text-slate-400">
@@ -160,12 +160,12 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <div>
-                  <span className="font-[family-name:var(--font-syne)] text-2xl font-black tracking-tighter text-white">NEXA</span>
+                  <span className="font-(family-name:--font-syne) text-2xl font-black tracking-tighter text-white">NEXA</span>
                   <span className="text-blue-400 font-bold text-sm ml-2 uppercase tracking-widest">Tech Labs</span>
                 </div>
               </div>
 
-              <h2 className="font-[family-name:var(--font-syne)] text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+              <h2 className="font-(family-name:--font-syne) text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
                 B2B Tech Studio untuk<br />
                 <span className="text-blue-400">UMKM Indonesia.</span>
               </h2>
@@ -182,7 +182,7 @@ export default function HomePage() {
                   { v: 'AI',   l: 'Powered'       },
                 ].map((s, i) => (
                   <div key={i}>
-                    <p className="font-[family-name:var(--font-syne)] text-2xl font-black text-white">{s.v}</p>
+                    <p className="font-(family-name:--font-syne) text-2xl font-black text-white">{s.v}</p>
                     <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">{s.l}</p>
                   </div>
                 ))}
@@ -231,7 +231,7 @@ export default function HomePage() {
             What I Do
             <span className="w-6 h-px bg-blue-600" />
           </span>
-          <h2 className="font-[family-name:var(--font-syne)] text-4xl md:text-5xl font-bold text-slate-900">
+          <h2 className="font-(family-name:--font-syne) text-4xl md:text-5xl font-bold text-slate-900">
             Core Expertise
           </h2>
         </div>
@@ -240,12 +240,12 @@ export default function HomePage() {
           {services.map((s, i) => (
             <div
               key={i}
-              className="group bg-white p-8 rounded-[1.5rem] border border-slate-200 hover:border-blue-200 transition-all duration-300 shadow-sm hover:shadow-xl card-hover"
+              className="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-blue-200 transition-all duration-300 shadow-sm hover:shadow-xl card-hover"
             >
               <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-colors duration-300 bg-${s.color}-50 text-${s.color}-600 group-hover:bg-${s.color === 'slate' ? 'slate-900' : s.color+'-600'} group-hover:text-white`}>
                 {s.icon}
               </div>
-              <h3 className="font-[family-name:var(--font-syne)] text-lg font-bold mb-3 text-slate-900">
+              <h3 className="font-(family-name:--font-syne) text-lg font-bold mb-3 text-slate-900">
                 {s.title}
               </h3>
               <p className="text-slate-500 text-sm leading-relaxed">{s.desc}</p>
@@ -262,7 +262,7 @@ export default function HomePage() {
               <span className="w-6 h-px bg-blue-600" />
               Featured Work
             </span>
-            <h2 className="font-[family-name:var(--font-syne)] text-4xl md:text-5xl font-bold text-slate-900">
+            <h2 className="font-(family-name:--font-syne) text-4xl md:text-5xl font-bold text-slate-900">
               Selected Projects
             </h2>
           </div>
@@ -297,25 +297,25 @@ export default function HomePage() {
               How I Work
               <span className="w-6 h-px bg-blue-600" />
             </span>
-            <h2 className="font-[family-name:var(--font-syne)] text-4xl md:text-5xl font-bold text-slate-900">
+            <h2 className="font-(family-name:--font-syne) text-4xl md:text-5xl font-bold text-slate-900">
               My Process
             </h2>
           </div>
 
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { num: '01', title: 'Discovery',  desc: 'Deep dive ke problem space dan business requirements klien.' },
+              { num: '01', title: 'Discovery',    desc: 'Deep dive ke problem space dan business requirements klien.' },
               { num: '02', title: 'Architecture', desc: 'Merancang sistem yang scalable, maintainable, dan cost-effective.' },
-              { num: '03', title: 'Execution',  desc: 'Iterasi cepat dengan feedback loop pendek dan dokumentasi jelas.' },
-              { num: '04', title: 'Delivery',   desc: 'Deploy ke production dengan monitoring, QA, dan post-launch support.' },
+              { num: '03', title: 'Execution',    desc: 'Iterasi cepat dengan feedback loop pendek dan dokumentasi jelas.' },
+              { num: '04', title: 'Delivery',     desc: 'Deploy ke production dengan monitoring, QA, dan post-launch support.' },
             ].map((step, i) => (
               <div key={i} className="relative">
                 <div className="mb-4">
-                  <span className="font-[family-name:var(--font-syne)] text-5xl font-black text-slate-100">
+                  <span className="font-(family-name:--font-syne) text-5xl font-black text-slate-100">
                     {step.num}
                   </span>
                 </div>
-                <h3 className="font-[family-name:var(--font-syne)] text-lg font-bold text-slate-900 mb-2">
+                <h3 className="font-(family-name:--font-syne) text-lg font-bold text-slate-900 mb-2">
                   {step.title}
                 </h3>
                 <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
@@ -331,9 +331,9 @@ export default function HomePage() {
       </section>
 
       {/* ── CTA ───────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 py-28">
+      <section className="relative overflow-hidden bg-linear-to-br from-blue-600 via-blue-700 to-indigo-700 py-28">
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <h2 className="font-[family-name:var(--font-syne)] text-4xl md:text-6xl font-black text-white mb-6 leading-tight tracking-tighter">
+          <h2 className="font-(family-name:--font-syne) text-4xl md:text-6xl font-black text-white mb-6 leading-tight tracking-tighter">
             Ready to Build<br />Something Great?
           </h2>
           <p className="text-blue-100 text-lg mb-12 max-w-xl mx-auto leading-relaxed">
