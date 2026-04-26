@@ -1,44 +1,21 @@
-import type { Metadata } from 'next';
-import ProfileImage from '@/components/ProfileImage';
+'use client';
+
+import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: 'About | Muhamad Fauzan Al Farikhi',
-  description: 'Tentang Muhamad Fauzan Al Farikhi — Tech Lead, AI Engineer, dan Founder NEXA Tech Labs.',
-};
-
 const VALUES = [
-  { icon: '🚀', title: 'Ship Fast, Learn Faster', desc: 'Iterasi cepat lebih baik dari perencanaan sempurna. Build, deploy, improve.' },
-  { icon: '🧠', title: 'AI-First Thinking',        desc: 'Setiap solusi bisnis punya potensi AI di dalamnya. Saya selalu cari cara implementasinya.' },
-  { icon: '🤝', title: 'Client Success = My Success', desc: 'KPI klien adalah KPI saya. Kalau bisnis mereka tumbuh, saya ikut tumbuh.' },
-  { icon: '📚', title: 'Always Learning',           desc: 'Teknologi berubah cepat. Berhenti belajar = tertinggal. Simple.' },
+  { icon: '🚀', title: 'Ship Fast, Learn Faster',       desc: 'Iterasi cepat lebih baik dari perencanaan sempurna. Build, deploy, improve.' },
+  { icon: '🧠', title: 'AI-First Thinking',              desc: 'Setiap solusi bisnis punya potensi AI di dalamnya. Saya selalu cari cara implementasinya.' },
+  { icon: '🤝', title: 'Client Success = My Success',   desc: 'KPI klien adalah KPI saya. Kalau bisnis mereka tumbuh, saya ikut tumbuh.' },
+  { icon: '📚', title: 'Always Learning',                desc: 'Teknologi berubah cepat. Berhenti belajar = tertinggal. Simple.' },
 ];
 
 const TIMELINE = [
-  {
-    year: '2026',
-    title: 'Juara 2 ICBC',
-    desc: 'Meraih Juara 2 International Canvas Business Competition di Udinus Semarang, membawa nama NEXA Tech Labs ke panggung internasional.',
-    color: 'amber',
-  },
-  {
-    year: '2024',
-    title: 'Mendirikan NEXA Tech Labs',
-    desc: 'Meluncurkan B2B tech studio pertama — 6 engineer, fokus AI + Web + Cloud untuk UMKM Indonesia.',
-    color: 'blue',
-  },
-  {
-    year: '2023',
-    title: 'Mulai Freelance Tech Lead',
-    desc: 'Mengerjakan proyek-proyek production pertama: sistem POS, AI chatbot, dan dashboard bisnis untuk klien nyata.',
-    color: 'indigo',
-  },
-  {
-    year: '2022',
-    title: 'Kuliah di Gunadarma',
-    desc: 'Mulai S1 Sistem Informasi di Universitas Gunadarma. Langsung terjun ke dunia teknologi, kompetisi, dan organisasi.',
-    color: 'violet',
-  },
+  { year: '2026', title: 'Juara 2 ICBC',              color: 'amber',  desc: 'Meraih Juara 2 International Canvas Business Competition di Udinus Semarang, membawa nama NEXA Tech Labs ke panggung internasional.' },
+  { year: '2024', title: 'Mendirikan NEXA Tech Labs', color: 'blue',   desc: 'Meluncurkan B2B tech studio pertama — 6 engineer, fokus AI + Web + Cloud untuk UMKM Indonesia.' },
+  { year: '2023', title: 'Mulai Freelance Tech Lead', color: 'indigo', desc: 'Mengerjakan proyek-proyek production pertama: sistem POS, AI chatbot, dan dashboard bisnis untuk klien nyata.' },
+  { year: '2022', title: 'Kuliah di Gunadarma',       color: 'violet', desc: 'Mulai S1 Sistem Informasi di Universitas Gunadarma. Langsung terjun ke dunia teknologi, kompetisi, dan organisasi.' },
 ];
 
 const FUN_FACTS = [
@@ -51,6 +28,8 @@ const FUN_FACTS = [
 ];
 
 export default function AboutPage() {
+  const [profileErr, setProfileErr] = useState(false);
+
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg)' }}>
 
@@ -64,9 +43,20 @@ export default function AboutPage() {
             <div className="shrink-0 relative">
               <div className="w-56 h-56 md:w-72 md:h-72 relative">
                 <div className="absolute inset-0 rounded-3xl bg-blue-400/20 blur-2xl scale-110" />
-                <div className="absolute inset-0 rounded-3xl border-2 border-dashed border-blue-200 dark:border-blue-800 animate-spin-slow" />
-                <div className="relative w-full h-full rounded-3xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl bg-slate-100 dark:bg-slate-800">
-                  <ProfileImage src="/images/profile.jpg" alt="Muhamad Fauzan Al Farikhi" />
+                <div className="absolute inset-0 rounded-3xl border-2 border-dashed border-blue-200 animate-spin-slow" />
+                <div className="relative w-full h-full rounded-3xl overflow-hidden border-4 border-white shadow-2xl" style={{ background: 'var(--surface-raised)' }}>
+                  {!profileErr ? (
+                    <Image
+                      src="/images/profile.jpg"
+                      alt="Muhamad Fauzan Al Farikhi"
+                      fill
+                      className="object-cover"
+                      onError={() => setProfileErr(true)}
+                      priority
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-7xl">👨‍💻</div>
+                  )}
                 </div>
               </div>
             </div>
@@ -79,13 +69,14 @@ export default function AboutPage() {
               <h1 className="font-(family-name:--font-syne) text-4xl md:text-6xl font-black tracking-tighter mb-5 leading-[0.9]" style={{ color: 'var(--text)' }}>
                 Hai, saya<br /><span className="gradient-text">Fauzan.</span>
               </h1>
-              <p className="text-lg leading-relaxed mb-6 max-w-xl mx-auto lg:mx-0" style={{ color: 'var(--text-3)' }}>
-                Tech Lead, AI Engineer, dan Founder <strong className="text-blue-600">@NEXA Tech Labs</strong>. 
-                Saya percaya teknologi bukan cuma alat — melainkan leverage terbesar untuk mengubah bisnis dan kehidupan orang banyak.
+              <p className="text-lg leading-relaxed mb-4 max-w-xl mx-auto lg:mx-0" style={{ color: 'var(--text-3)' }}>
+                Tech Lead, AI Engineer, dan Founder{' '}
+                <strong className="text-blue-600">@NEXA Tech Labs</strong>.
+                Saya percaya teknologi adalah leverage terbesar untuk mengubah bisnis dan kehidupan orang banyak.
               </p>
               <p className="text-base leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0" style={{ color: 'var(--text-3)' }}>
-                Mahasiswa Sistem Informasi di Universitas Gunadarma dengan IPK 3.89. 
-                Di luar kuliah, saya memimpin tim engineering di NEXA, membangun produk digital untuk UMKM Indonesia, 
+                Mahasiswa Sistem Informasi di Universitas Gunadarma dengan IPK 3.89.
+                Di luar kuliah, saya memimpin tim engineering di NEXA, membangun produk digital untuk UMKM Indonesia,
                 dan aktif berkompetisi di level internasional.
               </p>
               <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
@@ -109,7 +100,9 @@ export default function AboutPage() {
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
             <span className="w-6 h-px bg-blue-600" />Core Values<span className="w-6 h-px bg-blue-600" />
           </span>
-          <h2 className="font-(family-name:--font-syne) text-3xl md:text-4xl font-bold" style={{ color: 'var(--text)' }}>Yang Saya Percaya</h2>
+          <h2 className="font-(family-name:--font-syne) text-3xl md:text-4xl font-bold" style={{ color: 'var(--text)' }}>
+            Yang Saya Percaya
+          </h2>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {VALUES.map((v, i) => (
@@ -128,14 +121,15 @@ export default function AboutPage() {
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
             <span className="w-6 h-px bg-blue-600" />Timeline
           </span>
-          <h2 className="font-(family-name:--font-syne) text-3xl md:text-4xl font-bold" style={{ color: 'var(--text)' }}>Perjalanan Saya</h2>
+          <h2 className="font-(family-name:--font-syne) text-3xl md:text-4xl font-bold" style={{ color: 'var(--text)' }}>
+            Perjalanan Saya
+          </h2>
         </div>
         <div className="relative timeline-line pl-12">
           <div className="flex flex-col gap-8">
             {TIMELINE.map((item, i) => (
               <div key={i} className="relative">
-                {/* Dot */}
-                <div className={`absolute left-[-30px] top-5 w-4 h-4 rounded-full border-2 border-white dark:border-slate-900 shadow-md bg-${item.color}-500`} />
+                <div className={`absolute left-[-30px] top-5 w-4 h-4 rounded-full border-2 border-white shadow-md bg-${item.color}-500`} style={{ borderColor: 'var(--bg)' }} />
                 <div className="rounded-2xl p-6 border card-hover" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
                   <div className="flex items-center gap-3 mb-2">
                     <span className={`text-xs font-black px-3 py-1 rounded-full bg-${item.color}-50 text-${item.color}-600`}>{item.year}</span>
@@ -151,11 +145,9 @@ export default function AboutPage() {
 
       {/* ── FUN FACTS ── */}
       <section className="max-w-6xl mx-auto px-6 pb-16">
-        <div className="rounded-[2.5rem] p-10 md:p-14 relative overflow-hidden" style={{ background: 'var(--surface)' }}>
-          <div className="mb-8">
-            <h2 className="font-(family-name:--font-syne) text-2xl md:text-3xl font-bold mb-2" style={{ color: 'var(--text)' }}>Fun Facts 👾</h2>
-            <p className="text-sm" style={{ color: 'var(--text-3)' }}>Hal-hal yang membuat saya, saya.</p>
-          </div>
+        <div className="rounded-[2.5rem] p-10 md:p-14 border" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
+          <h2 className="font-(family-name:--font-syne) text-2xl md:text-3xl font-bold mb-2" style={{ color: 'var(--text)' }}>Fun Facts 👾</h2>
+          <p className="text-sm mb-8" style={{ color: 'var(--text-3)' }}>Hal-hal yang membuat saya, saya.</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {FUN_FACTS.map((f, i) => (
               <div key={i} className="flex items-center gap-3 p-4 rounded-2xl border" style={{ borderColor: 'var(--border)', background: 'var(--bg)' }}>
