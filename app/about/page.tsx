@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import ProfileImage from '@/components/ProfileImage';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -66,15 +66,7 @@ export default function AboutPage() {
                 <div className="absolute inset-0 rounded-3xl bg-blue-400/20 blur-2xl scale-110" />
                 <div className="absolute inset-0 rounded-3xl border-2 border-dashed border-blue-200 dark:border-blue-800 animate-spin-slow" />
                 <div className="relative w-full h-full rounded-3xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl bg-slate-100 dark:bg-slate-800">
-                  <Image
-                    src="/images/profile.jpg"
-                    alt="Muhamad Fauzan Al Farikhi"
-                    fill
-                    className="object-cover"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                    priority
-                  />
-                  <div className="w-full h-full flex items-center justify-center text-7xl">👨‍💻</div>
+                  <ProfileImage src="/images/profile.jpg" alt="Muhamad Fauzan Al Farikhi" />
                 </div>
               </div>
             </div>
