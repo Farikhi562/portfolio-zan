@@ -12,9 +12,9 @@ interface ProjectCardProps {
 }
 
 const statusConfig = {
-  'live':        { label: 'Live',        color: 'bg-green-50 text-green-700 border-green-200'  },
-  'in-progress': { label: 'In Progress', color: 'bg-amber-50 text-amber-700 border-amber-200'  },
-  'completed':   { label: 'Completed',   color: 'bg-slate-50 text-slate-600 border-slate-200'  },
+  'live':        { label: 'Live',        color: 'bg-green-50 text-green-700 border-green-200' },
+  'in-progress': { label: 'In Progress', color: 'bg-amber-50 text-amber-700 border-amber-200' },
+  'completed':   { label: 'Completed',   color: 'bg-slate-50 text-slate-600 border-slate-200' },
 };
 
 export default function ProjectCard({
@@ -31,7 +31,7 @@ export default function ProjectCard({
 
   return (
     <div
-      className={`group relative bg-white rounded-[1.5rem] border transition-all duration-500 flex flex-col overflow-hidden card-hover ${
+      className={`group relative bg-white rounded-3xl border transition-all duration-500 flex flex-col overflow-hidden card-hover ${
         highlight
           ? 'border-blue-200 shadow-lg shadow-blue-100/50'
           : 'border-slate-200 shadow-sm hover:border-blue-200'
@@ -41,8 +41,8 @@ export default function ProjectCard({
       <div
         className={`h-1 w-full ${
           highlight
-            ? 'bg-gradient-to-r from-blue-500 to-indigo-500'
-            : 'bg-gradient-to-r from-slate-200 to-slate-100 group-hover:from-blue-400 group-hover:to-indigo-400 transition-all duration-500'
+            ? 'bg-linear-to-r from-blue-500 to-indigo-500'
+            : 'bg-linear-to-r from-slate-200 to-slate-100 group-hover:from-blue-400 group-hover:to-indigo-400 transition-all duration-500'
         }`}
       />
 
@@ -53,7 +53,7 @@ export default function ProjectCard({
             <span className="text-xs font-bold uppercase tracking-widest text-blue-600 mb-1 block">
               {category}
             </span>
-            <h3 className="font-[family-name:var(--font-syne)] text-xl font-bold text-slate-900 leading-tight">
+            <h3 className="font-(family-name:--font-syne) text-xl font-bold text-slate-900 leading-tight">
               {title}
             </h3>
           </div>

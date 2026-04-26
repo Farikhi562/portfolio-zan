@@ -7,9 +7,9 @@ import { projectsData } from '@/data/projectsData';
 type FilterSlug = 'all' | 'web' | 'ai-ml' | 'business' | 'system';
 
 const filters: { slug: FilterSlug; label: string; emoji: string }[] = [
-  { slug: 'all',      label: 'All Projects',    emoji: '🚀' },
-  { slug: 'web',      label: 'Web Development', emoji: '🌐' },
-  { slug: 'ai-ml',    label: 'AI / ML',         emoji: '🧠' },
+  { slug: 'all',      label: 'All Projects',     emoji: '🚀' },
+  { slug: 'web',      label: 'Web Development',  emoji: '🌐' },
+  { slug: 'ai-ml',    label: 'AI / ML',          emoji: '🧠' },
   { slug: 'system',   label: 'Systems & DevOps', emoji: '⚙️' },
   { slug: 'business', label: 'Business',         emoji: '📊' },
 ];
@@ -20,6 +20,10 @@ export default function ProjectsPage() {
   const filtered = active === 'all'
     ? projectsData
     : projectsData.filter(p => p.categorySlug === active);
+
+  const liveCount    = projectsData.filter(p => p.status === 'live').length;
+  const aiCount      = projectsData.filter(p => p.categorySlug === 'ai-ml').length;
+  const totalCount   = projectsData.length;
 
   return (
     <div className="bg-slate-50 min-h-screen">
@@ -32,24 +36,25 @@ export default function ProjectsPage() {
             <span className="w-6 h-px bg-blue-600" />
             Portfolio
           </span>
-          <h1 className="font-[family-name:var(--font-syne)] text-5xl md:text-7xl font-black tracking-tighter text-slate-900 mb-6 leading-[0.9]">
+          <h1 className="font-(family-name:--font-syne) text-5xl md:text-7xl font-black tracking-tighter text-slate-900 mb-6 leading-[0.9]">
             Featured<br />
             <span className="gradient-text">Projects.</span>
           </h1>
           <p className="text-slate-500 text-xl max-w-2xl leading-relaxed">
-            Kumpulan eksekusi teknis mulai dari sistem POS enterprise, pipeline AI, 
+            Eksekusi teknis dari sistem POS enterprise, pipeline AI, 
             hingga web app production-ready yang digunakan klien nyata.
           </p>
 
           {/* Stats row */}
           <div className="flex flex-wrap gap-6 mt-8">
             {[
-              { value: `${projectsData.length}`, label: 'Total Projects' },
-              { value: `${projectsData.filter(p => p.status === 'live').length}`, label: 'Live in Production' },
-              { value: `${projectsData.filter(p => p.categorySlug === 'ai-ml').length}`, label: 'AI/ML Projects' },
+              { value: `${totalCount}`, label: 'Total Projects',    icon: '📁' },
+              { value: `${liveCount}`,  label: 'Live in Production', icon: '🚀' },
+              { value: `${aiCount}`,    label: 'AI/ML Projects',    icon: '🧠' },
             ].map((s, i) => (
-              <div key={i} className="flex items-center gap-2">
-                <span className="font-[family-name:var(--font-syne)] text-2xl font-black text-blue-600">{s.value}</span>
+              <div key={i} className="flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-4 py-2 shadow-sm">
+                <span>{s.icon}</span>
+                <span className="font-(family-name:--font-syne) text-xl font-black text-blue-600">{s.value}</span>
                 <span className="text-sm text-slate-500 font-medium">{s.label}</span>
               </div>
             ))}
@@ -60,27 +65,26 @@ export default function ProjectsPage() {
       {/* ── FILTER TABS ─────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 pb-8">
         <div className="flex flex-wrap gap-2">
-          {filters.map(f => (
-            <button
-              key={f.slug}
-              onClick={() => setActive(f.slug)}
-              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 ${
-                active === f.slug
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-200'
-                  : 'bg-white text-slate-600 border border-slate-200 hover:border-blue-200 hover:text-blue-600'
-              }`}
-            >
-              <span>{f.emoji}</span>
-              {f.label}
-              <span className={`text-xs px-1.5 py-0.5 rounded-full font-bold ${
-                active === f.slug
-                  ? 'bg-white/20 text-white'
-                  : 'bg-slate-100 text-slate-500'
-              }`}>
-                {f.slug === 'all' ? projectsData.length : projectsData.filter(p => p.categorySlug === f.slug).length}
-              </span>
-            </button>
-          ))}
+          {filters.map(f => {
+            const count = f.slug === 'all' ? totalCount : projectsData.filter(p => p.categorySlug === f.slug).length;
+            return (
+              <button
+                key={f.slug}
+                onClick={() => setActive(f.slug)}
+                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 ${
+                  active === f.slug
+                    ? 'bg-blue-600 text-white shadow-md shadow-blue-200'
+                    : 'bg-white text-slate-600 border border-slate-200 hover:border-blue-200 hover:text-blue-600'
+                }`}
+              >
+                <span>{f.emoji}</span>
+                {f.label}
+                <span className={`text-xs px-1.5 py-0.5 rounded-full font-bold ${
+                  active === f.slug ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500'
+                }`}>{count}</span>
+              </button>
+            );
+          })}
         </div>
       </section>
 
@@ -94,8 +98,9 @@ export default function ProjectsPage() {
           </div>
         ) : (
           <div className="text-center py-24 text-slate-400">
-            <p className="text-4xl mb-4">🔭</p>
-            <p className="font-semibold">No projects in this category yet.</p>
+            <p className="text-5xl mb-4">🔭</p>
+            <p className="font-bold text-slate-600 text-lg">No projects in this category yet.</p>
+            <p className="text-sm mt-2">Check back soon — always building!</p>
           </div>
         )}
       </section>
@@ -103,7 +108,8 @@ export default function ProjectsPage() {
       {/* ── CTA ─────────────────────────────────────────── */}
       <section className="border-t border-slate-200 bg-white py-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="font-[family-name:var(--font-syne)] text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          <div className="text-4xl mb-4">🚀</div>
+          <h2 className="font-(family-name:--font-syne) text-3xl md:text-4xl font-bold text-slate-900 mb-4">
             Punya proyek yang ingin dibangun?
           </h2>
           <p className="text-slate-500 text-lg mb-8 max-w-lg mx-auto">
