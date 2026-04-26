@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Portfolio Muhamad Fauzan Al Farikhi
 
-## Getting Started
+Portfolio profesional dibangun dengan **Next.js 15**, **TypeScript**, dan **Tailwind CSS v4**.
 
-First, run the development server:
+## ⚡ Quick Start
 
 ```bash
+# 1. Install dependencies
+npm install
+
+# 2. Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# 3. Buka browser
+# http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📁 Struktur Proyek
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+portfolio-fauzan/
+├── app/
+│   ├── globals.css          # Global styles + animations
+│   ├── layout.tsx           # Root layout (Navbar + Footer)
+│   ├── page.tsx             # Home page
+│   ├── about/page.tsx       # About + Timeline
+│   ├── projects/page.tsx    # Projects + Filter
+│   ├── skills/page.tsx      # Skills + Tech Stack
+│   ├── contact/page.tsx     # Contact Form
+│   └── not-found.tsx        # 404 Page
+├── components/
+│   ├── Navbar.tsx           # Responsive Navbar
+│   ├── Footer.tsx           # Footer
+│   ├── ProjectCard.tsx      # Project Card Component
+│   └── SectionHeader.tsx    # Reusable Section Header
+├── data/
+│   ├── projectsData.ts      # Project data (edit ini!)
+│   └── skillsData.ts        # Skills data (edit ini!)
+└── public/
+    └── profile.jpg          # Tambahkan foto kamu di sini!
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠 Customization
 
-## Learn More
+### Update Data
+- Edit `data/projectsData.ts` untuk update projects
+- Edit `data/skillsData.ts` untuk update skills & tech stack
 
-To learn more about Next.js, take a look at the following resources:
+### Tambah Foto Profile
+- Tambahkan file `profile.jpg` ke folder `/public/`
+- Update `app/about/page.tsx` — uncomment bagian `<Image />` component
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Update Resume
+- Tambahkan file `cv-fauzan.pdf` ke folder `/public/`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Update Info Kontak
+- Update email dan social links di `components/Footer.tsx`
+- Update social links di `app/contact/page.tsx`
 
-## Deploy on Vercel
+## 🎨 Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Category | Technology |
+|----------|-----------|
+| Framework | Next.js 15 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 |
+| Fonts | Syne (display) + DM Sans (body) |
+| Deployment | Vercel (recommended) |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Deploy ke Vercel
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+```
+
+Atau push ke GitHub dan connect ke Vercel dashboard.
+
+---
+
+Built with ❤️ by Muhamad Fauzan Al Farikhi — [NEXA Tech Labs](https://nexatechlabs.com)

@@ -1,38 +1,105 @@
-// Gunakan relative path untuk menghindari error path alias (@/)
-import { ProjectCardProps } from '../components/ProjectCard';
+export interface Project {
+  title: string;
+  role: string;
+  description: string;
+  techStack: string[];
+  linkUrl?: string;
+  category: string;
+  categorySlug: 'all' | 'web' | 'ai-ml' | 'business' | 'system';
+  status: 'live' | 'in-progress' | 'completed';
+  highlight?: boolean;
+}
 
-export const projectsData: ProjectCardProps[] = [
+export const projectsData: Project[] = [
   {
-    title: 'NEXA Tech Labs',
-    role: 'Founder, CEO & Tech Lead',
-    description: 'Memimpin startup digital beranggotakan 6 orang dalam mengembangkan solusi teknologi inovatif. Berhasil meraih Juara 2 dalam International Canvas Business Competition melalui perancangan model bisnis dan arsitektur teknis yang solid.',
-    techStack: ['Project Management', 'System Architecture', 'Leadership', 'Strategic Planning'],
-    // linkUrl: 'https://nexa-techlabs.id' // Tambahkan link jika sudah live
+    title: 'Dimsum Mentai POS System',
+    role: 'Tech Lead & Full-Stack Engineer',
+    description:
+      'Sistem Point of Sale, manajemen inventori, akuntansi otomatis, dan owner dashboard real-time untuk chain F&B 4 outlet. Dibangun dengan arsitektur multi-outlet yang scalable, laporan keuangan otomatis, dan manajemen stok lintas cabang.',
+    techStack: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'Vercel'],
+    category: 'Web System',
+    categorySlug: 'system',
+    status: 'in-progress',
+    highlight: true,
   },
   {
-    title: 'Dimsum Mentai - POS System',
-    role: 'Tech Lead & Fullstack Developer',
-    description: 'Digitalisasi operasional UMKM melalui pengembangan sistem Point of Sales (POS) mandiri. Mencakup manajemen inventaris real-time, pencatatan transaksi otomatis, dan infrastruktur database yang aman.',
-    techStack: ['Next.js', 'Tailwind CSS', 'PostgreSQL', 'Supabase'],
-    linkUrl: 'https://github.com/fauzan-lo/pos-dimsum' 
+    title: 'NEXA Tech Labs Platform',
+    role: 'Founder & Lead Developer',
+    description:
+      'Company profile & client portal NEXA Tech Labs. Showcase layanan AI Integration, Cloud/DevOps, dan Software Development untuk UMKM Indonesia. Dilengkapi dengan service calculator dan lead generation system.',
+    techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Vercel'],
+    linkUrl: '#',
+    category: 'Web Development',
+    categorySlug: 'web',
+    status: 'live',
+    highlight: true,
   },
   {
-    title: 'AI Business Intelligence Engine',
+    title: 'AI/ML Jupyter Toolkit',
+    role: 'AI Engineer & Author',
+    description:
+      'Toolkit Jupyter Notebook komprehensif mencakup Computer Vision, Classic ML, LLM/Prompt Engineering, dan Data Wrangling. Diintegrasikan dengan Anthropic Claude dan OpenAI API untuk pipeline AI yang production-ready.',
+    techStack: ['Python', 'PyTorch', 'OpenCV', 'Scikit-learn', 'LangChain', 'OpenAI API', 'Claude API'],
+    linkUrl: 'https://github.com/fauzanfauzan',
+    category: 'AI / ML',
+    categorySlug: 'ai-ml',
+    status: 'in-progress',
+    highlight: false,
+  },
+  {
+    title: 'Canvas Business Model — Intl. Competition',
+    role: 'CEO & Lead Strategist',
+    description:
+      'Business plan & canvas model yang meraih Juara 2 International Canvas Business Competition. Mencakup market analysis mendalam, financial projection, go-to-market strategy, dan pitch deck untuk NEXA Tech Labs.',
+    techStack: ['Business Strategy', 'Market Analysis', 'Financial Modeling', 'Pitch Deck'],
+    category: 'Business',
+    categorySlug: 'business',
+    status: 'completed',
+    highlight: false,
+  },
+  {
+    title: 'Computer Vision Pipeline',
     role: 'AI Engineer',
-    description: 'Implementasi model analitik berbasis AI untuk mengekstraksi insight dari data bisnis tidak terstruktur. Fokus pada optimalisasi pengambilan keputusan menggunakan integrasi GenAI dan basis data relasional.',
-    techStack: ['Python', 'Machine Learning', 'SQL', 'OpenAI API', 'Data Visualization'],
+    description:
+      'Pipeline deteksi objek dan klasifikasi gambar menggunakan YOLO dan ResNet. Digunakan untuk proof-of-concept quality control otomatis pada sektor manufaktur UMKM. Akurasi mencapai 94.2% pada test dataset.',
+    techStack: ['Python', 'YOLOv8', 'PyTorch', 'OpenCV', 'FastAPI', 'Docker'],
+    linkUrl: 'https://github.com/fauzanfauzan',
+    category: 'AI / ML',
+    categorySlug: 'ai-ml',
+    status: 'completed',
+    highlight: false,
   },
   {
-    title: 'Professional Developer Portfolio',
-    role: 'Frontend Developer',
-    description: 'Membangun platform portofolio multi-page modern dengan performa tinggi. Mengimplementasikan fitur routing dinamis, optimasi aset gambar, dan desain responsif menggunakan standar industri terbaru.',
-    techStack: ['Next.js (App Router)', 'TypeScript', 'Lucide Icons', 'Vercel Deployment'],
-    linkUrl: 'https://fauzan-dev.vercel.app'
+    title: 'Personal Portfolio Website',
+    role: 'Designer & Full-Stack Developer',
+    description:
+      'Portfolio profesional yang sedang kamu lihat sekarang. Dibangun dengan Next.js App Router, Tailwind CSS v4, TypeScript, dan desain custom. Menampilkan proyek, keahlian teknis, dan journey profesional.',
+    techStack: ['Next.js 15', 'TypeScript', 'Tailwind CSS v4', 'Vercel'],
+    category: 'Web Development',
+    categorySlug: 'web',
+    status: 'live',
+    highlight: false,
   },
   {
-    title: 'Automated Data Pipeline (MLOps)',
+    title: 'SME Chatbot Integration',
     role: 'AI Engineer',
-    description: 'Eksperimen pengembangan jalur pipa data otomatis untuk proses ETL (Extract, Transform, Load) data mentah menjadi dataset siap latih untuk model Machine Learning.',
-    techStack: ['Python', 'Pandas', 'GitHub Actions', 'MLOps Fundamentals'],
-  }
+    description:
+      'Chatbot berbasis LLM terintegrasi WhatsApp untuk UMKM — menjawab pertanyaan produk, menerima order, dan mengkategorikan keluhan pelanggan secara otomatis. Menggunakan RAG pattern untuk knowledge base bisnis.',
+    techStack: ['Python', 'LangChain', 'Claude API', 'WhatsApp Business API', 'FastAPI', 'PostgreSQL'],
+    category: 'AI / ML',
+    categorySlug: 'ai-ml',
+    status: 'completed',
+    highlight: false,
+  },
+  {
+    title: 'Cloud DevOps Infrastructure',
+    role: 'DevOps Engineer',
+    description:
+      'Setup CI/CD pipeline, containerization, dan deployment automation untuk beberapa proyek NEXA. Mencakup Docker, GitHub Actions workflow, environment management, dan monitoring sederhana menggunakan Vercel Analytics.',
+    techStack: ['Docker', 'GitHub Actions', 'Vercel', 'Nginx', 'Linux', 'Bash Scripting'],
+    category: 'DevOps',
+    categorySlug: 'system',
+    status: 'in-progress',
+    highlight: false,
+  },
 ];

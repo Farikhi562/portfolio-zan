@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -18,19 +18,10 @@
         "name": "next"
       }
     ],
-    /* Path Mapping */
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
-    },
-    /* Fix Deprecation Warning */
-    "ignoreDeprecations": "5.0"
+    }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
