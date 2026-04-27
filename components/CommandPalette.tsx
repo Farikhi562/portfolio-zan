@@ -12,8 +12,8 @@ const COMMANDS = [
   { id: 'contact',  label: 'Contact Me',           group: 'Navigation', icon: '✉️', action: '/contact' },
   { id: 'cv',       label: 'Download CV',          group: 'Actions',    icon: '📄', action: 'download-cv' },
   { id: 'github',   label: 'Open GitHub',          group: 'Social',     icon: '🐱', action: 'https://github.com/Farikhi562' },
-  { id: 'linkedin', label: 'Open LinkedIn',        group: 'Social',     icon: '💼', action: 'https://linkedin.com/in/fauzan-farikhi' },
-  { id: 'email',    label: 'Send Email',           group: 'Social',     icon: '📧', action: 'mailto:fauzan@nexatechlabs.id' },
+  { id: 'linkedin', label: 'Open LinkedIn',        group: 'Social',     icon: '💼', action: 'https://linkedin.com/in/fauzanalfarikhi' },
+  { id: 'email',    label: 'Send Email',           group: 'Social',     icon: '📧', action: 'mailto:ceo@nexatechlabs.my.id' },
   { id: 'dark',     label: 'Toggle Dark Mode',     group: 'Actions',    icon: '🌙', action: 'toggle-theme' },
   { id: 'top',      label: 'Scroll to Top',        group: 'Actions',    icon: '⬆️', action: 'scroll-top' },
 ];

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PERSONAL, EDUCATION, ACHIEVEMENTS, EXPERIENCE } from '@/data/siteData';
+import { PERSONAL, EDUCATION, ACHIEVEMENTS, EXPERIENCE } from '@/data/siteInfo';
 
 const VALUES = [
   { icon: '🧠', title: 'Belajar dari Realita',    desc: 'Buku itu penting, tapi proyek nyata mengajarkan hal yang tidak ada di kurikulum.' },
