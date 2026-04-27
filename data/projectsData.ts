@@ -5,6 +5,8 @@ export interface Project {
   description: string;
   techStack: string[];
   linkUrl?: string;
+  links?: { label: string; url: string; icon: string }[]; // Upgrade: Support multi-link (Proposal, Docs)
+  image?: string; // Upgrade: Support logo (Udinus)
   category: string;
   categorySlug: 'web' | 'ai-ml' | 'business' | 'system';
   status: 'live' | 'in-progress' | 'completed';
@@ -25,7 +27,7 @@ export const projectsData: Project[] = [
     categorySlug: 'system',
     status: 'in-progress',
     highlight: true,
-    year: '2024',
+    year: '2026',
     highlights: [
       'Multi-outlet dashboard — satu tampilan untuk 4 cabang sekaligus',
       'Real-time inventory sync antar cabang dengan Supabase Realtime',
@@ -46,7 +48,7 @@ export const projectsData: Project[] = [
     categorySlug: 'web',
     status: 'live',
     highlight: true,
-    year: '2024',
+    year: '2026',
     highlights: [
       'Desain modern dan fully responsive',
       'Lead generation terintegrasi',
@@ -65,7 +67,7 @@ export const projectsData: Project[] = [
     categorySlug: 'ai-ml',
     status: 'in-progress',
     highlight: false,
-    year: '2024',
+    year: '2026',
     highlights: [
       '20+ notebook siap pakai untuk berbagai ML use case',
       'Integrasi Claude API dan OpenAI untuk LLM experiments',
@@ -74,22 +76,27 @@ export const projectsData: Project[] = [
     ],
   },
   {
-    slug: 'icbc-2026-business-canvas',
-    title: 'ICBC 2026 — Business Canvas NEXA',
+    slug: 'nexa-sphere-icbc-2026',
+    title: 'NEXA-Sphere: ICBC 2026',
     role: 'Founder & Lead Strategist',
     description:
-      'Business canvas dan proposal yang mengantarkan NEXA Tech Labs masuk Top 6 Finalist di International Canvas Business Competition 2026 (Udinus Semarang). Mencakup market analysis, model bisnis, dan strategi go-to-market.',
-    techStack: ['Business Strategy', 'Market Analysis', 'Financial Modeling', 'Pitch Deck'],
+      'Proposal NEXA-Sphere yang mengantarkan NEXA Tech Labs masuk Top 6 Finalist di International Canvas Business Competition (ICBC) 2026 di Udinus Semarang. Mencakup arsitektur sistem tingkat lanjut, business canvas, dan dokumentasi komprehensif.',
+    techStack: ['Business Strategy', 'System Architecture', 'Market Analysis', 'Financial Modeling'],
     category: 'Business',
     categorySlug: 'business',
     status: 'completed',
-    highlight: false,
+    highlight: true,
     year: '2026',
+    image: '/images/logo-udinus.png', // Pastikan logo ini ada di folder public/images/
+    links: [
+      { label: 'Baca NEXA-Sphere', url: '/docs/nexa-sphere-proposal.pdf', icon: '📄' },
+      { label: 'Dokumentasi', url: '/docs/nexa-sphere-docs.pdf', icon: '📚' }
+    ],
     highlights: [
       'Top 6 Finalist ICBC 2026 di Udinus Semarang',
+      'Blueprint ekosistem arsitektur sistem NEXA',
       'Market analysis UMKM Indonesia — TAM/SAM/SOM',
       'Business model canvas lengkap untuk NEXA Tech Labs',
-      'Proposal dinilai terbaik dari ratusan peserta',
     ],
   },
   {
@@ -104,7 +111,7 @@ export const projectsData: Project[] = [
     categorySlug: 'ai-ml',
     status: 'completed',
     highlight: false,
-    year: '2024',
+    year: '2026',
     highlights: [
       'Akurasi 94.2% pada test dataset',
       'Real-time inference 30+ FPS di CPU standar',
@@ -116,13 +123,13 @@ export const projectsData: Project[] = [
     title: 'Portfolio Website',
     role: 'Designer & Full-Stack Developer',
     description:
-      'Portfolio profesional ini. Dibangun dengan Next.js 15, Tailwind CSS v4, TypeScript. Dark mode, responsive, dan dilengkapi banyak fitur interaktif.',
-    techStack: ['Next.js 15', 'TypeScript', 'Tailwind CSS v4', 'Vercel'],
+      'Portfolio profesional ini. Dibangun dengan Next.js, Tailwind CSS v4, TypeScript. Dark mode, responsive, dan dilengkapi banyak fitur interaktif.',
+    techStack: ['Next.js', 'TypeScript', 'Tailwind CSS v4', 'Vercel'],
     category: 'Web Development',
     categorySlug: 'web',
     status: 'live',
     highlight: false,
-    year: '2025',
+    year: '2026',
     highlights: [
       'Dark mode dengan no-flash implementation',
       'Fully responsive — mobile, tablet, desktop',
@@ -141,7 +148,7 @@ export const projectsData: Project[] = [
     categorySlug: 'ai-ml',
     status: 'completed',
     highlight: false,
-    year: '2024',
+    year: '2026',
     highlights: [
       'RAG untuk knowledge base produk klien',
       'Response time rata-rata < 2 detik',
