@@ -15,7 +15,7 @@ const TIMELINE = [
   { year: '2026', title: 'Juara 2 ICBC',              color: 'amber',  desc: 'Meraih Juara 2 International Canvas Business Competition di Udinus Semarang, membawa nama NEXA Tech Labs ke panggung internasional.' },
   { year: '2024', title: 'Mendirikan NEXA Tech Labs', color: 'blue',   desc: 'Meluncurkan B2B tech studio pertama — 6 engineer, fokus AI + Web + Cloud untuk UMKM Indonesia.' },
   { year: '2023', title: 'Mulai Freelance Tech Lead', color: 'indigo', desc: 'Mengerjakan proyek-proyek production pertama: sistem POS, AI chatbot, dan dashboard bisnis untuk klien nyata.' },
-  { year: '2022', title: 'Kuliah di Gunadarma',       color: 'violet', desc: 'Mulai S1 Sistem Informasi di Universitas Gunadarma. Langsung terjun ke dunia teknologi, kompetisi, dan organisasi.' },
+  { year: '2022', title: 'Kuliah di Gunadarma',       color: 'violet', desc: 'Mulai S1 Informatika di Universitas Gunadarma. Langsung terjun ke dunia teknologi, kompetisi, dan organisasi.' },
 ];
 
 const FUN_FACTS = [
@@ -75,7 +75,7 @@ export default function AboutPage() {
                 Saya percaya teknologi adalah leverage terbesar untuk mengubah bisnis dan kehidupan orang banyak.
               </p>
               <p className="text-base leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0" style={{ color: 'var(--text-3)' }}>
-                Mahasiswa Sistem Informasi di Universitas Gunadarma dengan IPK 3.89.
+                Mahasiswa Informatika di Universitas Gunadarma dengan IPK 3.89.
                 Di luar kuliah, saya memimpin tim engineering di NEXA, membangun produk digital untuk UMKM Indonesia,
                 dan aktif berkompetisi di level internasional.
               </p>

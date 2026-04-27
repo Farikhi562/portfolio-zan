@@ -3,7 +3,11 @@ import { Syne, DM_Sans } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import FloatingDock from '@/components/FloatingDock';
+import FloatingActions from '@/components/FloatingActions';
+import CommandPalette from '@/components/CommandPalette';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { ToastProvider } from '@/components/ToastProvider';
 
 const syne = Syne({
   subsets: ['latin'],
@@ -22,7 +26,10 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Muhamad Fauzan Al Farikhi | Tech Lead & AI Engineer',
+  title: {
+    default: 'Muhamad Fauzan Al Farikhi | Tech Lead & AI Engineer',
+    template: '%s | Muhamad Fauzan Al Farikhi',
+  },
   description: 'Portfolio Muhamad Fauzan Al Farikhi — Founder & CEO NEXA Tech Labs, Tech Lead & AI Engineer yang membangun solusi digital skalabel untuk UMKM Indonesia.',
   keywords: ['AI Engineer', 'Tech Lead', 'Next.js', 'Machine Learning', 'NEXA Tech Labs', 'Indonesia', 'Fullstack Developer'],
   authors: [{ name: 'Muhamad Fauzan Al Farikhi' }],
@@ -44,15 +51,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
-        {/* Prevent flash of wrong theme — runs before React hydrates */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');if(t){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();`,
-          }}
-        />
+        {/* No-flash dark mode */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('theme');if(t){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();` }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+        {/* Mobile meta */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="theme-color" content="#2563eb" />
       </head>
       <body
         className="flex flex-col min-h-screen font-(family-name:--font-dm-sans) antialiased"
@@ -60,9 +68,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         suppressHydrationWarning
       >
         <ThemeProvider>
-          <Navbar />
-          <main className="grow">{children}</main>
-          <Footer />
+          <ToastProvider>
+            <Navbar />
+            <main className="grow pb-20 md:pb-0">{children}</main>
+            <Footer />
+            <FloatingDock />
+            <FloatingActions />
+            <CommandPalette />
+          </ToastProvider>
         </ThemeProvider>
       </body>
     </html>

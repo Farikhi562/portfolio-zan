@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 interface ProjectCardProps {
+  slug?: string;
   title: string;
   role: string;
   description: string;
@@ -14,104 +15,98 @@ interface ProjectCardProps {
 const statusConfig = {
   'live':        { label: 'Live',        color: 'bg-green-50 text-green-700 border-green-200' },
   'in-progress': { label: 'In Progress', color: 'bg-amber-50 text-amber-700 border-amber-200' },
-  'completed':   { label: 'Completed',   color: 'bg-slate-50 text-slate-600 border-slate-200' },
+  'completed':   { label: 'Completed',   color: 'bg-slate-100 text-slate-600 border-slate-200' },
 };
 
 export default function ProjectCard({
-  title,
-  role,
-  description,
-  techStack,
-  linkUrl,
-  category,
-  status = 'completed',
-  highlight = false,
+  slug, title, role, description, techStack,
+  linkUrl, category, status = 'completed', highlight = false,
 }: ProjectCardProps) {
-  const statusStyle = statusConfig[status];
+  const s = statusConfig[status];
 
-  return (
+  const card = (
     <div
-      className={`group relative bg-white rounded-3xl border transition-all duration-500 flex flex-col overflow-hidden card-hover ${
-        highlight
-          ? 'border-blue-200 shadow-lg shadow-blue-100/50'
-          : 'border-slate-200 shadow-sm hover:border-blue-200'
-      }`}
+      className={`group relative rounded-3xl border transition-all duration-300 flex flex-col overflow-hidden card-hover h-full`}
+      style={{
+        background: 'var(--surface)',
+        borderColor: highlight ? '#bfdbfe' : 'var(--border)',
+        boxShadow: highlight ? '0 4px 24px rgba(37,99,235,0.08)' : undefined,
+      }}
     >
-      {/* Top color bar */}
-      <div
-        className={`h-1 w-full ${
-          highlight
-            ? 'bg-linear-to-r from-blue-500 to-indigo-500'
-            : 'bg-linear-to-r from-slate-200 to-slate-100 group-hover:from-blue-400 group-hover:to-indigo-400 transition-all duration-500'
-        }`}
-      />
+      {/* Top bar */}
+      <div className={`h-1 w-full ${highlight ? 'bg-linear-to-r from-blue-500 to-indigo-500' : 'bg-linear-to-r from-[var(--border)] to-[var(--border)] group-hover:from-blue-400 group-hover:to-indigo-400 transition-all duration-500'}`} />
 
-      <div className="p-7 flex flex-col flex-1">
+      <div className="p-5 sm:p-6 flex flex-col flex-1 gap-3">
         {/* Header */}
-        <div className="flex items-start justify-between mb-4">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-blue-600 mb-1 block">
+        <div className="flex items-start justify-between gap-2">
+          <div className="min-w-0 flex-1">
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-blue-600 mb-1 block">
               {category}
             </span>
-            <h3 className="font-(family-name:--font-syne) text-xl font-bold text-slate-900 leading-tight">
+            <h3 className="font-(family-name:--font-syne) text-base sm:text-lg font-bold leading-snug" style={{ color: 'var(--text)' }}>
               {title}
             </h3>
           </div>
-          <span
-            className={`shrink-0 ml-3 mt-0.5 text-xs font-semibold px-2.5 py-1 rounded-full border ${statusStyle.color}`}
-          >
-            {statusStyle.label}
+          <span className={`shrink-0 text-[10px] sm:text-xs font-semibold px-2 sm:px-2.5 py-1 rounded-full border whitespace-nowrap ${s.color}`}>
+            {s.label}
           </span>
         </div>
 
         {/* Role */}
-        <p className="text-xs font-semibold text-slate-500 mb-3">
-          <span className="text-slate-400">Role:</span> {role}
+        <p className="text-xs font-semibold" style={{ color: 'var(--text-muted)' }}>
+          Role: <span style={{ color: 'var(--text-3)' }}>{role}</span>
         </p>
 
         {/* Description */}
-        <p className="text-slate-600 text-sm leading-relaxed mb-5 flex-1">
+        <p className="text-sm leading-relaxed flex-1 line-clamp-3 sm:line-clamp-none" style={{ color: 'var(--text-3)' }}>
           {description}
         </p>
 
-        {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {techStack.map(tech => (
+        {/* Tech stack */}
+        <div className="flex flex-wrap gap-1.5">
+          {techStack.slice(0, 4).map(tech => (
             <span
               key={tech}
-              className="text-xs font-semibold text-slate-600 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-lg"
+              className="text-[10px] sm:text-xs font-semibold px-2 sm:px-2.5 py-1 rounded-lg border"
+              style={{ background: 'var(--bg)', borderColor: 'var(--border)', color: 'var(--text-3)' }}
             >
               {tech}
             </span>
           ))}
+          {techStack.length > 4 && (
+            <span
+              className="text-[10px] sm:text-xs font-semibold px-2 sm:px-2.5 py-1 rounded-lg border"
+              style={{ background: 'var(--bg)', borderColor: 'var(--border)', color: 'var(--text-muted)' }}
+            >
+              +{techStack.length - 4}
+            </span>
+          )}
         </div>
 
-        {/* Link */}
-        {linkUrl && (
-          <Link
-            href={linkUrl}
-            target={linkUrl.startsWith('http') ? '_blank' : undefined}
-            rel={linkUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
-            className="inline-flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700 transition-colors group/link"
-          >
-            View Project
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="group-hover/link:translate-x-1 transition-transform"
+        {/* Links */}
+        <div className="flex items-center gap-4 pt-1">
+          {slug && (
+            <span className="text-sm font-bold text-blue-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+              Details →
+            </span>
+          )}
+          {linkUrl && (
+            <a
+              href={linkUrl}
+              target={linkUrl.startsWith('http') ? '_blank' : undefined}
+              rel="noopener noreferrer"
+              className="text-sm font-bold transition-colors inline-flex items-center gap-1"
+              style={{ color: 'var(--text-muted)' }}
+              onClick={e => e.stopPropagation()}
             >
-              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-            </svg>
-          </Link>
-        )}
+              Live ↗
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );
+
+  if (slug) return <Link href={`/projects/${slug}`} className="h-full block">{card}</Link>;
+  return card;
 }
