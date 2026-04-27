@@ -5,10 +5,10 @@ import { useState } from 'react';
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
 const CONTACTS = [
-  { icon: '✉️', label: 'Email',    value: 'fauzan@nexatechlabs.id',      href: 'mailto:fauzan@nexatechlabs.id' },
-  { icon: '💼', label: 'LinkedIn', value: 'linkedin.com/in/fauzan-farikhi', href: 'https://linkedin.com/in/fauzan-farikhi' },
+  { icon: '✉️', label: 'Email',    value: 'fauzanalfa36@gmail.com',      href: 'mailto:fauzanalfa36@gmail.com' },
+  { icon: '💼', label: 'LinkedIn', value: 'linkedin.com/in/fauzanalfarikhi', href: 'https://linkedin.com/in/fauzanalfarikhi' },
   { icon: '🐱', label: 'GitHub',   value: 'github.com/Farikhi562',        href: 'https://github.com/Farikhi562' },
-  { icon: '📍', label: 'Location', value: 'Depok, Jawa Barat, Indonesia', href: null },
+  { icon: '📍', label: 'Location', value: 'Senen, Jakarta Pusat, Indonesia', href: null },
 ];
 
 const SERVICES = [
@@ -75,7 +75,7 @@ export default function ContactPage() {
             Let&apos;s<br /><span className="gradient-text">Connect.</span>
           </h1>
           <p className="text-xl max-w-2xl leading-relaxed" style={{ color: 'var(--text-3)' }}>
-            Punya proyek, pertanyaan, atau sekadar ingin ngobrol soal teknologi? 
+            Punya proyek, pertanyaan, atau sekedar ingin ngobrol soal teknologi? 
             Saya selalu terbuka. Balas biasanya dalam 24 jam.
           </p>
         </div>

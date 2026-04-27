@@ -5,23 +5,23 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const VALUES = [
-  { icon: '🚀', title: 'Ship Fast, Learn Faster',       desc: 'Iterasi cepat lebih baik dari perencanaan sempurna. Build, deploy, improve.' },
-  { icon: '🧠', title: 'AI-First Thinking',              desc: 'Setiap solusi bisnis punya potensi AI di dalamnya. Saya selalu cari cara implementasinya.' },
-  { icon: '🤝', title: 'Client Success = My Success',   desc: 'KPI klien adalah KPI saya. Kalau bisnis mereka tumbuh, saya ikut tumbuh.' },
+  { icon: '🚀', title: 'Ship Fast, Learn Faster',       desc: 'Iterasi cepet lebih baik dari perencanaan sempurna. Build, deploy, improve.' },
+  { icon: '🧠', title: 'AI-First Thinking',              desc: 'Setiap solusi bisnis punya potensi AI di dalemnya. Saya selalu cari cara implementasinya.' },
+  { icon: '🤝', title: 'Client Success = My Success',   desc: 'KPI klien adalah KPI saya. Kalo bisnis mereka tumbuh, saya ikut tumbuh.' },
   { icon: '📚', title: 'Always Learning',                desc: 'Teknologi berubah cepat. Berhenti belajar = tertinggal. Simple.' },
 ];
 
 const TIMELINE = [
-  { year: '2026', title: 'Juara 2 ICBC',              color: 'amber',  desc: 'Meraih Juara 2 International Canvas Business Competition di Udinus Semarang, membawa nama NEXA Tech Labs ke panggung internasional.' },
-  { year: '2024', title: 'Mendirikan NEXA Tech Labs', color: 'blue',   desc: 'Meluncurkan B2B tech studio pertama — 6 engineer, fokus AI + Web + Cloud untuk UMKM Indonesia.' },
-  { year: '2023', title: 'Mulai Freelance Tech Lead', color: 'indigo', desc: 'Mengerjakan proyek-proyek production pertama: sistem POS, AI chatbot, dan dashboard bisnis untuk klien nyata.' },
-  { year: '2022', title: 'Kuliah di Gunadarma',       color: 'violet', desc: 'Mulai S1 Informatika di Universitas Gunadarma. Langsung terjun ke dunia teknologi, kompetisi, dan organisasi.' },
+  { year: '2026', title: 'Peserta Kompetisi ICBC 2026',              color: 'amber',  desc: 'Mengikuti kompetisi International Canvas Business Competition di Udinus Semarang, membawa nama NEXA Tech Labs ke panggung internasional.' },
+  { year: '2026', title: 'Mendirikan NEXA Tech Labs', color: 'blue',   desc: 'Meluncurkan B2B tech studio pertama — 7 engineer, fokus AI + Web + Cloud untuk UMKM Indonesia.' },
+  { year: '2025', title: 'Mulai Freelance Tech Lead', color: 'indigo', desc: 'Mengerjakan proyek-proyek production pertama: sistem POS, AI chatbot, dan dashboard bisnis untuk klien nyata.' },
+  { year: '2025', title: 'Kuliah di Gunadarma',       color: 'violet', desc: 'Mulai S1 Informatika di Universitas Gunadarma. Langsung terjun ke dunia teknologi, kompetisi, dan organisasi.' },
 ];
 
 const FUN_FACTS = [
   { emoji: '☕', text: 'Kopi hitam tanpa gula, setiap hari' },
   { emoji: '🎮', text: 'Strategy game addict (RTS & Tycoon)' },
-  { emoji: '🌙', text: 'Paling produktif jam 10 malam sampai 2 pagi' },
+  { emoji: '🌙', text: 'Paling produktif jam 10 malam sampai 5 pagi' },
   { emoji: '🐍', text: 'Python adalah cinta pertama dalam coding' },
   { emoji: '📱', text: 'Dark mode di semua device, tanpa pengecualian' },
   { emoji: '🏔️', text: 'Mimpi: bangun startup yang IPO sebelum 30' },
@@ -67,7 +67,7 @@ export default function AboutPage() {
                 <span className="w-6 h-px bg-blue-600" />About Me
               </span>
               <h1 className="font-(family-name:--font-syne) text-4xl md:text-6xl font-black tracking-tighter mb-5 leading-[0.9]" style={{ color: 'var(--text)' }}>
-                Hai, saya<br /><span className="gradient-text">Fauzan.</span>
+                Hai, saya<br /><span className="gradient-text">Farikhi.</span>
               </h1>
               <p className="text-lg leading-relaxed mb-4 max-w-xl mx-auto lg:mx-0" style={{ color: 'var(--text-3)' }}>
                 Tech Lead, AI Engineer, dan Founder{' '}
@@ -166,7 +166,7 @@ export default function AboutPage() {
             Yuk, Berkolaborasi!
           </h2>
           <p className="text-blue-100 text-lg mb-8 max-w-lg mx-auto">
-            Punya proyek menarik? Saya selalu terbuka untuk diskusi, kolaborasi, atau sekadar ngobrol soal teknologi.
+            Punya proyek menarik? Saya selalu terbuka untuk diskusi, kolaborasi, atau sekedar ngobrol soal teknologi.
           </p>
           <Link href="/contact" className="inline-flex items-center gap-2 bg-white text-blue-700 px-10 py-4 rounded-2xl font-black text-lg hover:bg-blue-50 transition-all shadow-2xl">
             Hubungi Saya

@@ -95,7 +95,7 @@ export const projectsData: Project[] = [
     description:
       'Pipeline deteksi objek dan klasifikasi gambar menggunakan YOLO dan ResNet. Digunakan untuk proof-of-concept quality control otomatis pada sektor manufaktur UMKM. Akurasi mencapai 94.2% pada test dataset.',
     techStack: ['Python', 'YOLOv8', 'PyTorch', 'OpenCV', 'FastAPI', 'Docker'],
-    linkUrl: 'https://github.com/fauzanfauzan',
+    linkUrl: 'https://github.com/farikhi562',
     category: 'AI / ML',
     categorySlug: 'ai-ml',
     status: 'completed',

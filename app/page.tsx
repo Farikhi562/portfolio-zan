@@ -54,23 +54,23 @@ const TECH_ICONS = [
 ];
 
 const STATS = [
-  { num: 6,   suffix: '+', label: 'Tim Engineers',     icon: '👥', raw: '6+' },
+  { num: 6,   suffix: '+', label: 'Tim Engineers',     icon: '👥', raw: '7' },
   { num: 389, suffix: '',  label: 'IPK × 100',         icon: '🎓', raw: '3.89' },
-  { num: 4,   suffix: '',  label: 'Client Live',       icon: '🤝', raw: '4' },
-  { num: 2,   suffix: '',  label: 'Juara Internasional',icon: '🏆', raw: 'Juara 2' },
+  { num: 4,   suffix: '',  label: 'Client Live',       icon: '🤝', raw: '5' },
+  { num: 2,   suffix: '',  label: 'Juara Kompetisi',icon: '🏆', raw: '4' },
 ];
 
 const ACHIEVEMENTS = [
   {
-    title: 'Juara 2 — ICBC 2026',
-    subtitle: 'International Canvas Business Competition',
-    org: 'Universitas Dian Nuswantoro (Udinus), Semarang',
-    year: '2026',
-    desc: 'Meraih Juara 2 dalam kompetisi bisnis internasional bergengsi. Mempresentasikan model bisnis B2B NEXA Tech Labs di hadapan juri dari industri dan akademisi internasional.',
+    title: 'Matematika - Telkom University',
+    subtitle: 'Kompetisi Matematika nasional yang di adakan oleh telkom',
+    org: 'Universitas Telekomunikasi, Bandung',
+    year: '2022',
+    desc: 'Meraih Juara 2 dalam kompetisi Matematika bergengsi. Mengerjakan soal matematika tingkat lanjut.',
     badge: '🏆',
     tags: ['B2B', 'AI', 'Business Model', 'Tech'],
-    logo: '/images/udinus.png',
-    img: '/images/icbc-2026.jpg',
+    logo: '/images/telkom.png',
+    img: '/images/study.jpg',
     accent: 'amber',
   },
 ];
@@ -79,11 +79,11 @@ const EDUCATION = [
   {
     degree: 'S1 Sistem Informasi',
     school: 'Universitas Gunadarma',
-    period: '2022 – Sekarang',
+    period: '2025 – Sekarang',
     gpa: '3.89',
     logo: '/images/gunadarma.png',
     city: 'Depok, Jawa Barat',
-    desc: 'Fokus pada pengembangan sistem informasi, kecerdasan buatan, dan rekayasa perangkat lunak. Aktif di berbagai kompetisi teknologi dan organisasi kampus.',
+    desc: 'Fokus pada pengembangan sistem informasi, kecerdasan buatan, dan rekayasa perangkat lunak. Aktif di berbagai kompetisi teknologi kampus.',
     highlights: ['IPK 3.89 (Dean\'s List)', 'Kompetisi Bisnis Internasional', 'AI & Software Engineering'],
   },
 ];
@@ -92,7 +92,7 @@ const EXPERIENCE = [
   {
     role: 'Founder & CEO',
     company: 'NEXA Tech Labs',
-    period: 'Feb 2024 – Sekarang',
+    period: 'Mar 2026 – Sekarang',
     type: 'Startup',
     desc: 'Mendirikan dan memimpin B2B tech studio yang melayani UMKM dan enterprise Indonesia dengan solusi AI, Web Development, dan Cloud/DevOps.',
     tags: ['Leadership', 'Product', 'AI', 'B2B'],
@@ -102,7 +102,7 @@ const EXPERIENCE = [
   {
     role: 'Tech Lead & AI Engineer',
     company: 'Freelance Projects',
-    period: '2023 – Sekarang',
+    period: '2025 – Sekarang',
     type: 'Freelance',
     desc: 'Mengerjakan 4+ proyek production — sistem POS enterprise, AI chatbot, dashboard bisnis, dan web app untuk klien nyata.',
     tags: ['Next.js', 'FastAPI', 'PostgreSQL', 'MLOps'],
@@ -112,29 +112,29 @@ const EXPERIENCE = [
 ];
 
 const CERTS = [
-  { title: 'Juara 2 ICBC 2026',     org: 'Udinus Semarang',     year: '2026', icon: '🥈', color: 'amber' },
-  { title: 'AI/ML Fundamentals',    org: 'Online Certification', year: '2024', icon: '🧠', color: 'violet' },
-  { title: 'Cloud & DevOps Basics', org: 'Online Certification', year: '2024', icon: '☁️', color: 'sky'    },
-  { title: 'Full-Stack Web Dev',    org: 'Online Certification', year: '2023', icon: '🌐', color: 'blue'   },
+  { title: 'Juara 2 Matematika',     org: 'Telkom University',     year: '2022', icon: '🥈', color: 'amber' },
+  { title: 'AI/ML Fundamentals',    org: 'Online Certification', year: '2026', icon: '🧠', color: 'violet' },
+  { title: 'Cloud & DevOps Basics', org: 'Online Certification', year: '2026', icon: '☁️', color: 'sky'    },
+  { title: 'Full-Stack Web Dev',    org: 'Online Certification', year: '2026', icon: '🌐', color: 'blue'   },
 ];
 
 const TESTIMONIALS = [
   {
     quote: 'Fauzan dan tim NEXA membangun sistem POS kami dalam waktu sangat cepat dengan kualitas enterprise-grade. Hasilnya melebihi ekspektasi!',
-    name: 'Client UMKM F&B',
-    role: 'Pemilik Bisnis Kuliner',
+    name: 'Syahrul Ramadhan',
+    role: 'Pemilik Dimsum Mentai Kmyrn',
     emoji: '☕',
   },
   {
     quote: 'Implementasi AI chatbot dari NEXA benar-benar mengubah cara kami melayani customer. Response time turun 70% dan kepuasan meningkat drastis.',
-    name: 'Client Retail',
-    role: 'Manager Operasional',
+    name: 'Bapak Setyo Budi',
+    role: 'Pemilik Kedai di daerah pasar Senen',
     emoji: '🛒',
   },
   {
     quote: 'Dashboard bisnis yang dibangun NEXA sangat intuitif. Tim kami langsung bisa pakai tanpa training panjang. Sangat direkomendasikan!',
-    name: 'Client Enterprise',
-    role: 'Direktur IT',
+    name: 'Ibu Lintang',
+    role: 'Kaprodi Informatika Universitas Gunadarma 2026',
     emoji: '📊',
   },
 ];
@@ -228,8 +228,8 @@ export default function HomePage() {
       <aside className="fixed left-5 bottom-0 z-40 hidden xl:flex flex-col items-center gap-3 pb-8">
         {[
           { href: 'https://github.com/Farikhi562', label: 'GitHub', svg: <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg> },
-          { href: 'https://linkedin.com/in/fauzan-farikhi', label: 'LinkedIn', svg: <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> },
-          { href: 'mailto:fauzan@nexatechlabs.id', label: 'Email', svg: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> },
+          { href: 'https://linkedin.com/in/fauzanalfarikhi', label: 'LinkedIn', svg: <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> },
+          { href: 'mailto:fauzanalfa36@gmail.com', label: 'Email', svg: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> },
         ].map((s, i) => (
           <a key={i} href={s.href} target="_blank" rel="noopener noreferrer" title={s.label}
             className="w-9 h-9 bg-white border border-slate-200 rounded-xl flex items-center justify-center text-slate-500 hover:text-blue-600 hover:border-blue-300 hover:scale-110 transition-all shadow-sm"
@@ -313,8 +313,8 @@ export default function HomePage() {
                 <span className="text-xs text-slate-400 font-medium">Find me on</span>
                 {[
                   { href: 'https://github.com/Farikhi562', label: 'GitHub' },
-                  { href: 'https://linkedin.com/in/fauzan-farikhi', label: 'LinkedIn' },
-                  { href: 'mailto:fauzan@nexatechlabs.id', label: 'Email' },
+                  { href: 'https://linkedin.com/in/fauzanalfarikhi', label: 'LinkedIn' },
+                  { href: 'mailto:fauzanalfa36@gmail.com', label: 'Email' },
                 ].map((s, i) => (
                   <a key={i} href={s.href} target="_blank" rel="noopener noreferrer"
                     className="text-xs font-bold text-slate-600 hover:text-blue-600 underline underline-offset-2 transition-colors"
