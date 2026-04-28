@@ -3,13 +3,62 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PERSONAL, EDUCATION, ACHIEVEMENTS, EXPERIENCE } from '@/data/siteInfo';
+
+const EDUCATION = [
+  {
+    id: 's1', level: 'S1 / Sarjana', degree: 'Teknik Informatika',
+    school: 'Universitas Gunadarma', period: '2025 – Sekarang', city: 'Depok, Jawa Barat',
+    img: '/images/gunadarma.png', isLogo: true,
+    gpa: '3.89', gpaPeriod: 'Semester 1',
+    desc: 'Fokus pada pengembangan perangkat lunak, kecerdasan buatan, dan rekayasa sistem.',
+    highlights: ['IPK 3.89 (Semester 1)', 'Aktif membangun NEXA Tech Labs', 'Fokus AI & Software Engineering'],
+  },
+  {
+    id: 'sma', level: 'SMA', degree: 'IPA',
+    school: 'SMA Taman Madya 1 Jakarta', period: '2021 – 2024', city: 'Jakarta',
+    img: '/images/sma-taman-madya.jpg', isLogo: false,
+    gpa: null, gpaPeriod: null,
+    desc: 'Aktif di olimpiade sains tingkat nasional — Fisika dan Sastra Indonesia.',
+    highlights: ['Medali Emas Olimpiade Fisika', 'Medali Perak Sastra Indonesia', 'Medali Perunggu Olimpiade Fisika'],
+  },
+  {
+    id: 'smp', level: 'SMP', degree: '',
+    school: 'SMPN 4 Jakarta', period: '2018 – 2021', city: 'Jakarta',
+    img: '/images/smpn4-jakarta.jpg', isLogo: false,
+    gpa: null, gpaPeriod: null,
+    desc: 'Sekolah menengah pertama negeri di Jakarta Pusat.',
+    highlights: [],
+  },
+];
+
+const ACHIEVEMENTS = [
+  { id: 'icbc', badge: '🏅', title: 'Top 6 Finalist — ICBC 2026', subtitle: 'International Canvas Business Competition', org: 'Universitas Dian Nuswantoro (Udinus), Semarang', year: '2026', note: 'Top 6 Finalist', color: 'blue', tags: ['B2B', 'AI', 'Nasional'], desc: 'Masuk Top 6 Finalist penilaian proposal ICBC 2026. Mempresentasikan model bisnis NEXA Tech Labs.', img: '/images/icbc-2026.jpg' },
+  { id: 'fisika-emas', badge: '🥇', title: 'Medali Emas — Olimpiade Fisika', subtitle: 'Liga Olimpiade Nasional', org: 'Liga Olimpiade', year: '17 Sep 2022', note: 'Medali Emas', color: 'yellow', tags: ['Fisika', 'Nasional'], desc: 'Medali Emas Olimpiade Fisika tingkat nasional yang diselenggarakan Liga Olimpiade.', img: null },
+  { id: 'sastra-perak', badge: '🥈', title: 'Medali Perak — Sastra Indonesia', subtitle: 'Liga Olimpiade Nasional', org: 'Liga Olimpiade', year: '11 Nov 2022', note: 'Medali Perak', color: 'slate', tags: ['Sastra Indonesia', 'Nasional'], desc: 'Medali Perak Olimpiade Sastra Indonesia tingkat nasional.', img: null },
+  { id: 'fisika-perunggu', badge: '🥉', title: 'Medali Perunggu — Olimpiade Fisika', subtitle: 'Liga Olimpiade Nasional', org: 'Liga Olimpiade', year: '8 Mar 2022', note: 'Medali Perunggu', color: 'orange', tags: ['Fisika', 'Nasional'], desc: 'Medali Perunggu Olimpiade Fisika tingkat nasional.', img: null },
+  { id: 'telkom', badge: '🎖️', title: 'Peserta — Olimpiade Fisika Nasional', subtitle: 'Telkom University', org: 'Telkom University', year: '11 Okt 2021', note: 'Peserta Nasional', color: 'red', tags: ['Fisika', 'Nasional'], desc: 'Berpartisipasi dalam Olimpiade Fisika Nasional yang diselenggarakan Telkom University.', img: null },
+];
+
+const TEAM = [
+  { name: 'Muhamad Fauzan Al Farikhi', role: 'CEO & Strategic Client',  photo: '/images/team/fauzan.jpg'   },
+  { name: 'Mirza Danisywar N.W.',       role: 'BizDev & Hunter',         photo: '/images/team/mirza.jpg'    },
+  { name: 'Mochammad Triandra A.',      role: 'CTO',                     photo: '/images/team/triandra.jpg' },
+  { name: 'Rangga Dwi Prasetyo',        role: 'Quality Assurance',       photo: '/images/team/rangga.jpg'   },
+  { name: 'Yusuf Maulana W.',           role: 'Sales & Social Media',    photo: '/images/team/yusuf.jpg'    },
+  { name: 'Muhammad Iqbal Fajri',       role: 'Project Manager',         photo: '/images/team/iqbal.jpg'    },
+  { name: 'Syawalludin Fitroh R.',      role: 'UI/UX Designer',          photo: '/images/team/syawal.jpg'   },
+];
+
+const EXPERIENCE = [
+  { id: 'nexa', role: 'Founder & CEO', company: 'NEXA Tech Labs', period: '19 Mar 2026 – Sekarang', type: 'Startup', color: 'blue', logo: '/images/nexa-logo.png', desc: 'Mendirikan B2B tech studio yang fokus membantu UMKM Indonesia dengan AI, Web Development, dan Cloud/DevOps. Operasional aktif, belum berbadan hukum resmi.', tags: ['Leadership', 'AI', 'B2B', 'Web Dev'], note: 'Operasional aktif · Belum legal entity' },
+  { id: 'freelance', role: 'Freelance Developer', company: 'Independent', period: '29 Mar 2026 – Sekarang', type: 'Freelance', color: 'indigo', logo: null, desc: 'Mengerjakan proyek web development dan AI untuk klien sambil membangun portofolio nyata.', tags: ['Next.js', 'Python', 'AI', 'Web Dev'], note: null },
+];
 
 const VALUES = [
-  { icon: '🧠', title: 'Belajar dari Realita',    desc: 'Buku itu penting, tapi proyek nyata mengajarkan hal yang tidak ada di kurikulum.' },
-  { icon: '🚀', title: 'Build & Ship',             desc: 'Lebih baik launch versi 0.1 yang berjalan daripada rencana sempurna yang tidak pernah jadi.' },
-  { icon: '🤝', title: 'Kolaborasi Dulu',          desc: 'Satu orang bisa coding, tapi tim yang solid bisa membangun produk.' },
-  { icon: '📈', title: 'Data-Driven Thinking',     desc: 'Setiap keputusan harus ada angkanya. Gut feeling itu perlu, tapi data itu wajib.' },
+  { icon: '🧠', title: 'Belajar dari Realita', desc: 'Proyek nyata mengajarkan hal yang tidak ada di kurikulum.' },
+  { icon: '🚀', title: 'Build & Ship', desc: 'Lebih baik launch 0.1 yang berjalan daripada rencana sempurna.' },
+  { icon: '🤝', title: 'Tim Dulu', desc: 'Satu orang bisa coding, tapi tim solid bisa bangun produk.' },
+  { icon: '📈', title: 'Data-Driven', desc: 'Gut feeling itu perlu, tapi data itu wajib.' },
 ];
 
 const FUN_FACTS = [
@@ -18,16 +67,24 @@ const FUN_FACTS = [
   { emoji: '🌙', text: 'Paling produktif antara jam 10 malam sampai subuh' },
   { emoji: '🎮', text: 'Strategy game addict — RTS dan city builder' },
   { emoji: '📱', text: 'Dark mode everywhere, tidak ada kompromi' },
-  { emoji: '🏗️', text: 'Udah mulai bangun startup dari semester 1' },
+  { emoji: '🏗️', text: 'Mulai bangun startup dari semester 1 kuliah' },
 ];
 
 const MEDAL_COLOR: Record<string, string> = {
-  yellow:  'bg-yellow-50 text-yellow-700 border-yellow-200',
-  slate:   'bg-slate-100 text-slate-700 border-slate-200',
-  orange:  'bg-orange-50 text-orange-700 border-orange-200',
-  red:     'bg-red-50    text-red-700    border-red-200',
-  blue:    'bg-blue-50   text-blue-700   border-blue-200',
+  blue: 'bg-blue-50 text-blue-700 border-blue-200', yellow: 'bg-yellow-50 text-yellow-700 border-yellow-200',
+  slate: 'bg-slate-100 text-slate-600 border-slate-200', orange: 'bg-orange-50 text-orange-700 border-orange-200',
+  red: 'bg-red-50 text-red-700 border-red-200',
 };
+
+function SafeImage({ src, alt, width, height, fill, className, onErr }: {
+  src: string; alt: string; width?: number; height?: number;
+  fill?: boolean; className?: string; onErr?: () => void;
+}) {
+  const [err, setErr] = useState(false);
+  if (err) return null;
+  if (fill) return <Image src={src} alt={alt} fill className={className} onError={() => { setErr(true); onErr?.(); }} />;
+  return <Image src={src} alt={alt} width={width!} height={height!} className={className} onError={() => { setErr(true); onErr?.(); }} />;
+}
 
 export default function AboutPage() {
   const [profileErr, setProfileErr] = useState(false);
@@ -36,34 +93,24 @@ export default function AboutPage() {
     <div className="min-h-screen" style={{ background: 'var(--bg)' }}>
 
       {/* ── HERO ── */}
-      <section className="relative pt-28 pb-16 overflow-hidden">
+      <section className="relative pt-28 pb-12 overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-40 pointer-events-none" />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
 
             {/* Photo */}
             <div className="shrink-0">
-              <div className="w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 relative">
+              <div className="w-48 h-48 sm:w-64 sm:h-64 relative">
                 <div className="absolute inset-0 rounded-3xl bg-blue-400/20 blur-2xl scale-110" />
                 <div className="absolute inset-0 rounded-3xl border-2 border-dashed border-blue-200 animate-spin-slow" />
                 <div className="relative w-full h-full rounded-3xl overflow-hidden border-4 border-white shadow-2xl" style={{ background: 'var(--surface-raised)' }}>
                   {!profileErr ? (
-                    <Image
-                      src="/images/profile.jpg"
-                      alt={PERSONAL.name}
-                      fill
-                      className="object-cover"
-                      onError={() => setProfileErr(true)}
-                      priority
-                    />
+                    <Image src="/images/profile.jpg" alt="Fauzan" fill className="object-cover" onError={() => setProfileErr(true)} priority />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-6xl sm:text-7xl">👨‍💻</div>
+                    <div className="w-full h-full flex items-center justify-center text-6xl">👨‍💻</div>
                   )}
                 </div>
-                {/* Floating badge */}
-                <div className="absolute -bottom-3 -right-3 bg-blue-600 text-white text-xs font-black px-3 py-1.5 rounded-xl shadow-lg">
-                  Sem. 2 · 2025
-                </div>
+                <div className="absolute -bottom-3 -right-3 bg-blue-600 text-white text-xs font-black px-3 py-1.5 rounded-xl shadow-lg">Sem. 2 · 2025</div>
               </div>
             </div>
 
@@ -72,50 +119,36 @@ export default function AboutPage() {
               <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
                 <span className="w-6 h-px bg-blue-600" />About Me
               </span>
-              <h1 className="font-(family-name:--font-syne) text-3xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-4 leading-[0.92]" style={{ color: 'var(--text)' }}>
+              <h1 className="font-(family-name:--font-syne) font-black tracking-tighter mb-4 leading-[0.92]"
+                style={{ color: 'var(--text)', fontSize: 'clamp(2rem, 7vw, 4rem)' }}>
                 Hai, saya<br /><span className="gradient-text">Fauzan.</span>
               </h1>
-              <p className="text-base sm:text-lg leading-relaxed mb-3 max-w-xl mx-auto lg:mx-0" style={{ color: 'var(--text-3)' }}>
-                Mahasiswa <strong style={{ color: 'var(--text-2)' }}>Teknik Informatika Universitas Gunadarma</strong> angkatan 2025. 
-                Pendiri <strong className="text-blue-600">NEXA Tech Labs</strong> — B2B tech studio untuk UMKM Indonesia.
+              <p className="text-sm sm:text-base leading-relaxed mb-3 max-w-xl mx-auto lg:mx-0" style={{ color: 'var(--text-3)' }}>
+                Mahasiswa <strong style={{ color: 'var(--text-2)' }}>Teknik Informatika Universitas Gunadarma</strong> angkatan 2025.
+                Pendiri <strong className="text-blue-600">NEXA Tech Labs</strong> — berdiri 19 Maret 2026.
               </p>
-              <p className="text-sm sm:text-base leading-relaxed mb-6 max-w-xl mx-auto lg:mx-0" style={{ color: 'var(--text-3)' }}>
-                Dari olimpiade fisika medali emas sampai nulis kode yang jalan di production — saya percaya 
-                bahwa gabungan logika sains dan engineering bisa solve masalah nyata di masyarakat.
+              <p className="text-xs sm:text-sm leading-relaxed mb-5 max-w-xl mx-auto lg:mx-0" style={{ color: 'var(--text-3)' }}>
+                Dari olimpiade fisika medali emas sampai nulis kode production — saya percaya logika sains dan engineering bisa solve masalah nyata.
               </p>
 
               {/* Quick stats */}
-              <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-6">
-                {[
-                  { icon: '🎓', label: 'IPK 3.89', sub: 'Semester 1' },
-                  { icon: '🥇', label: '3 Medali', sub: 'Olimpiade Nasional' },
-                  { icon: '🏢', label: 'NEXA Labs', sub: 'Founder & CEO' },
-                ].map((s, i) => (
-                  <div key={i} className="flex items-center gap-2 px-3 py-2 rounded-xl border text-sm" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
+              <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-5">
+                {[{ icon: '🎓', label: 'IPK 3.89', sub: 'Semester 1' }, { icon: '🥇', label: '3 Medali', sub: 'Olimpiade Nasional' }, { icon: '🏢', label: 'NEXA', sub: 'Founder & CEO' }].map((s, i) => (
+                  <div key={i} className="flex items-center gap-2 px-3 py-2 rounded-xl border" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
                     <span>{s.icon}</span>
                     <div>
-                      <p className="font-bold leading-none text-xs" style={{ color: 'var(--text)' }}>{s.label}</p>
+                      <p className="font-bold text-xs leading-none" style={{ color: 'var(--text)' }}>{s.label}</p>
                       <p className="text-[10px] leading-none mt-0.5" style={{ color: 'var(--text-muted)' }}>{s.sub}</p>
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-                <Link href="/contact" className="btn-glow inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-2xl font-bold text-sm hover:bg-blue-700 transition-all shadow-lg shadow-blue-200">
-                  Let&apos;s Collaborate
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </Link>
-                <a href={PERSONAL.cv} download className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-bold text-sm border transition-all hover:border-blue-300" style={{ borderColor: 'var(--border)', color: 'var(--text-2)' }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-                  Download CV
-                </a>
-                <a href={PERSONAL.contact.waLink} target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-bold text-sm transition-all"
-                  style={{ background: '#25D366', color: 'white' }}>
-                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                  WhatsApp
-                </a>
+              <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
+                <Link href="/contact" className="btn-glow inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-2xl font-bold text-sm hover:bg-blue-700 transition-all shadow-lg shadow-blue-200">Let&apos;s Collaborate</Link>
+                <a href="/cv-fauzan.pdf" download className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-bold text-sm border transition-all hover:border-blue-300" style={{ borderColor: 'var(--border)', color: 'var(--text-2)' }}>Download CV</a>
+                <a href="https://wa.me/6285811211505?text=Halo%20Fauzan!" target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-bold text-sm" style={{ background: '#25D366', color: 'white' }}>WA</a>
               </div>
             </div>
           </div>
@@ -123,58 +156,41 @@ export default function AboutPage() {
       </section>
 
       {/* ── EDUCATION ── */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
-        <div className="mb-8">
-          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
-            <span className="w-6 h-px bg-blue-600" />Education
-          </span>
-          <h2 className="font-(family-name:--font-syne) text-2xl sm:text-3xl md:text-4xl font-bold" style={{ color: 'var(--text)' }}>
-            Latar Belakang Pendidikan
-          </h2>
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-12">
+        <div className="mb-6">
+          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-2"><span className="w-6 h-px bg-blue-600" />Education</span>
+          <h2 className="font-(family-name:--font-syne) text-2xl sm:text-4xl font-bold" style={{ color: 'var(--text)' }}>Latar Belakang Pendidikan</h2>
         </div>
-
-        <div className="flex flex-col gap-4">
-          {EDUCATION.map((edu) => (
-            <div key={edu.id} className="flex gap-4 sm:gap-6 p-4 sm:p-6 rounded-2xl border card-hover" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
-              {/* Logo / Icon */}
-              <div className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden border flex items-center justify-center" style={{ borderColor: 'var(--border)', background: 'var(--bg)' }}>
-                {edu.logo ? (
-                  <Image src={edu.logo} alt={edu.school} width={56} height={56} className="object-contain p-1" />
-                ) : (
-                  <span className="text-xl">{edu.level === 'SMA' ? '🏫' : '🏛️'}</span>
-                )}
+        <div className="flex flex-col gap-3">
+          {EDUCATION.map(edu => (
+            <div key={edu.id} className="flex gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl border card-hover overflow-hidden" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
+              {/* Photo/Logo */}
+              <div className="shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden border" style={{ borderColor: 'var(--border)', background: 'var(--bg)' }}>
+                <SafeImage src={edu.img} alt={edu.school} width={64} height={64}
+                  className={edu.isLogo ? 'object-contain p-1.5 w-full h-full' : 'object-cover w-full h-full'} />
               </div>
-
-              {/* Info */}
               <div className="flex-1 min-w-0">
-                <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
+                <div className="flex flex-wrap items-start justify-between gap-1 mb-1">
                   <div>
                     <span className="text-[10px] font-bold uppercase tracking-widest text-blue-600 block">{edu.level}</span>
-                    <h3 className="font-(family-name:--font-syne) font-bold text-sm sm:text-base" style={{ color: 'var(--text)' }}>
-                      {edu.school}
-                    </h3>
+                    <h3 className="font-(family-name:--font-syne) font-bold text-sm sm:text-base" style={{ color: 'var(--text)' }}>{edu.school}</h3>
                     {edu.degree && <p className="text-xs" style={{ color: 'var(--text-3)' }}>{edu.degree}</p>}
                   </div>
                   <div className="text-right shrink-0">
-                    <p className="text-xs font-semibold" style={{ color: 'var(--text-muted)' }}>{edu.period}</p>
+                    <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{edu.period}</p>
                     <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{edu.city}</p>
                   </div>
                 </div>
-
                 {edu.gpa && (
                   <div className="inline-flex items-center gap-1.5 mt-1 px-2.5 py-1 rounded-lg bg-blue-50 border border-blue-100">
                     <span className="text-xs font-black text-blue-600">{edu.gpa}</span>
                     <span className="text-[10px] text-blue-500">IPK · {edu.gpaPeriod}</span>
                   </div>
                 )}
-
+                <p className="text-xs mt-1.5 mb-2" style={{ color: 'var(--text-3)' }}>{edu.desc}</p>
                 {edu.highlights.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5 mt-2">
-                    {edu.highlights.map((h, j) => (
-                      <span key={j} className="text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded-full" style={{ background: 'var(--bg)', color: 'var(--text-3)', border: '1px solid var(--border)' }}>
-                        {h}
-                      </span>
-                    ))}
+                  <div className="flex flex-wrap gap-1.5">
+                    {edu.highlights.map((h, j) => <span key={j} className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ background: 'var(--bg)', color: 'var(--text-3)', border: '1px solid var(--border)' }}>{h}</span>)}
                   </div>
                 )}
               </div>
@@ -183,39 +199,34 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── ACHIEVEMENTS & COMPETITIONS ── */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
-        <div className="mb-8">
-          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-amber-600 mb-3">
-            <span className="w-6 h-px bg-amber-500" />Achievements
-          </span>
-          <h2 className="font-(family-name:--font-syne) text-2xl sm:text-3xl md:text-4xl font-bold" style={{ color: 'var(--text)' }}>
-            Prestasi & Kompetisi
-          </h2>
+      {/* ── ACHIEVEMENTS ── */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-12">
+        <div className="mb-6">
+          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-amber-600 mb-2"><span className="w-6 h-px bg-amber-500" />Achievements</span>
+          <h2 className="font-(family-name:--font-syne) text-2xl sm:text-4xl font-bold" style={{ color: 'var(--text)' }}>Prestasi & Kompetisi</h2>
         </div>
-
-        <div className="grid sm:grid-cols-2 gap-4">
-          {ACHIEVEMENTS.map((a) => (
-            <div key={a.id} className="flex gap-4 p-4 sm:p-5 rounded-2xl border card-hover" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
-              <div className="text-2xl sm:text-3xl shrink-0 mt-0.5">{a.badge}</div>
-              <div className="min-w-0 flex-1">
-                <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
-                  <h3 className="font-(family-name:--font-syne) font-bold text-sm leading-snug" style={{ color: 'var(--text)' }}>
-                    {a.title}
-                  </h3>
-                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border shrink-0 ${MEDAL_COLOR[a.color] ?? 'bg-slate-100 text-slate-600 border-slate-200'}`}>
-                    {a.note}
-                  </span>
+        <div className="grid sm:grid-cols-2 gap-3">
+          {ACHIEVEMENTS.map(a => (
+            <div key={a.id} className="rounded-2xl border card-hover overflow-hidden" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
+              {/* Documentation photo if available */}
+              {a.img && (
+                <div className="w-full h-32 overflow-hidden">
+                  <SafeImage src={a.img} alt={a.title} fill className="object-cover" />
                 </div>
-                <p className="text-xs font-semibold text-blue-600 mb-0.5">{a.subtitle}</p>
-                <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{a.org} · {a.year}</p>
-                <p className="text-xs leading-relaxed mt-1.5" style={{ color: 'var(--text-3)' }}>{a.desc}</p>
-                <div className="flex flex-wrap gap-1 mt-2">
-                  {a.tags.map((t, j) => (
-                    <span key={j} className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ background: 'var(--bg)', color: 'var(--text-muted)', border: '1px solid var(--border)' }}>
-                      {t}
-                    </span>
-                  ))}
+              )}
+              <div className="flex gap-3 p-4">
+                <span className="text-2xl shrink-0 mt-0.5">{a.badge}</span>
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-start justify-between gap-1.5 mb-0.5">
+                    <h3 className="font-(family-name:--font-syne) font-bold text-xs sm:text-sm" style={{ color: 'var(--text)' }}>{a.title}</h3>
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border shrink-0 ${MEDAL_COLOR[a.color]}`}>{a.note}</span>
+                  </div>
+                  <p className="text-xs font-semibold text-blue-600">{a.subtitle}</p>
+                  <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{a.org} · {a.year}</p>
+                  <p className="text-xs mt-1 leading-relaxed" style={{ color: 'var(--text-3)' }}>{a.desc}</p>
+                  <div className="flex flex-wrap gap-1 mt-1.5">
+                    {a.tags.map((t, j) => <span key={j} className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ background: 'var(--bg)', color: 'var(--text-muted)', border: '1px solid var(--border)' }}>{t}</span>)}
+                  </div>
                 </div>
               </div>
             </div>
@@ -224,49 +235,32 @@ export default function AboutPage() {
       </section>
 
       {/* ── EXPERIENCE ── */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
-        <div className="mb-8">
-          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
-            <span className="w-6 h-px bg-blue-600" />Experience
-          </span>
-          <h2 className="font-(family-name:--font-syne) text-2xl sm:text-3xl md:text-4xl font-bold" style={{ color: 'var(--text)' }}>
-            Pengalaman
-          </h2>
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-12">
+        <div className="mb-6">
+          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-2"><span className="w-6 h-px bg-blue-600" />Experience</span>
+          <h2 className="font-(family-name:--font-syne) text-2xl sm:text-4xl font-bold" style={{ color: 'var(--text)' }}>Pengalaman</h2>
         </div>
-
-        <div className="flex flex-col gap-4">
-          {EXPERIENCE.map((exp) => (
-            <div key={exp.id} className="flex gap-4 sm:gap-6 p-4 sm:p-6 rounded-2xl border card-hover" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
-              <div className="shrink-0 w-12 h-12 rounded-xl overflow-hidden border flex items-center justify-center" style={{ borderColor: 'var(--border)', background: 'var(--bg)' }}>
-                {exp.logo ? (
-                  <Image src={exp.logo} alt={exp.company} width={48} height={48} className="object-contain p-1" />
-                ) : (
-                  <span className="text-xl">💼</span>
-                )}
+        <div className="flex flex-col gap-3">
+          {EXPERIENCE.map(exp => (
+            <div key={exp.id} className="flex gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl border card-hover" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
+              <div className="shrink-0 w-11 h-11 rounded-xl overflow-hidden border flex items-center justify-center" style={{ borderColor: 'var(--border)', background: 'var(--bg)' }}>
+                {exp.logo ? <SafeImage src={exp.logo} alt={exp.company} width={44} height={44} className="object-contain p-1 w-full h-full" /> : <span className="text-lg">💼</span>}
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
+                <div className="flex flex-wrap items-start justify-between gap-1 mb-1">
                   <div>
                     <h3 className="font-(family-name:--font-syne) font-bold text-sm sm:text-base" style={{ color: 'var(--text)' }}>{exp.role}</h3>
                     <p className="text-xs font-bold text-blue-600">{exp.company}</p>
                   </div>
-                  <div className="text-right">
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${exp.color === 'blue' ? 'bg-blue-50 text-blue-600' : 'bg-indigo-50 text-indigo-600'}`}>
-                      {exp.type}
-                    </span>
+                  <div className="text-right shrink-0">
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${exp.color === 'blue' ? 'bg-blue-50 text-blue-600' : 'bg-indigo-50 text-indigo-600'}`}>{exp.type}</span>
                     <p className="text-[10px] mt-0.5" style={{ color: 'var(--text-muted)' }}>{exp.period}</p>
                   </div>
                 </div>
-                <p className="text-xs sm:text-sm leading-relaxed mb-2" style={{ color: 'var(--text-3)' }}>{exp.desc}</p>
-                {exp.note && (
-                  <p className="text-[10px] italic mb-2" style={{ color: 'var(--text-muted)' }}>*{exp.note}</p>
-                )}
+                <p className="text-xs sm:text-sm leading-relaxed mb-1" style={{ color: 'var(--text-3)' }}>{exp.desc}</p>
+                {exp.note && <p className="text-[10px] italic mb-1.5" style={{ color: 'var(--text-muted)' }}>*{exp.note}</p>}
                 <div className="flex flex-wrap gap-1.5">
-                  {exp.tags.map((t, j) => (
-                    <span key={j} className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ background: 'var(--bg)', color: 'var(--text-3)', border: '1px solid var(--border)' }}>
-                      {t}
-                    </span>
-                  ))}
+                  {exp.tags.map((t, j) => <span key={j} className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ background: 'var(--bg)', color: 'var(--text-3)', border: '1px solid var(--border)' }}>{t}</span>)}
                 </div>
               </div>
             </div>
@@ -274,20 +268,38 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── VALUES ── */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
-        <div className="text-center mb-10">
-          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
-            <span className="w-6 h-px bg-blue-600" />Mindset<span className="w-6 h-px bg-blue-600" />
-          </span>
-          <h2 className="font-(family-name:--font-syne) text-2xl sm:text-3xl md:text-4xl font-bold" style={{ color: 'var(--text)' }}>
-            Yang Saya Percaya
-          </h2>
+      {/* ── TEAM ── */}
+      <section id="team" className="max-w-6xl mx-auto px-4 sm:px-6 pb-12">
+        <div className="mb-6">
+          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-2"><span className="w-6 h-px bg-blue-600" />Tim</span>
+          <h2 className="font-(family-name:--font-syne) text-2xl sm:text-4xl font-bold" style={{ color: 'var(--text)' }}>Tim NEXA Tech Labs</h2>
+          <p className="text-xs sm:text-sm mt-1" style={{ color: 'var(--text-muted)' }}>Berdiri 19 Maret 2026 · 7 orang</p>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+          {TEAM.map((member, i) => (
+            <div key={i} className="flex flex-col items-center gap-3 p-4 sm:p-5 rounded-2xl border card-hover text-center" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border" style={{ borderColor: 'var(--border)', background: 'var(--bg)' }}>
+                <SafeImage src={member.photo} alt={member.name} width={80} height={80} className="object-cover w-full h-full" />
+              </div>
+              <div>
+                <p className="font-(family-name:--font-syne) font-bold text-xs sm:text-sm leading-tight" style={{ color: 'var(--text)' }}>{member.name}</p>
+                <p className="text-[10px] sm:text-xs text-blue-600 font-semibold mt-0.5">{member.role}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── VALUES ── */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-12">
+        <div className="text-center mb-7">
+          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3"><span className="w-6 h-px bg-blue-600" />Mindset<span className="w-6 h-px bg-blue-600" /></span>
+          <h2 className="font-(family-name:--font-syne) text-2xl sm:text-4xl font-bold" style={{ color: 'var(--text)' }}>Yang Saya Percaya</h2>
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {VALUES.map((v, i) => (
-            <div key={i} className="rounded-2xl p-4 sm:p-6 border card-hover" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
-              <span className="text-2xl sm:text-3xl mb-3 block">{v.icon}</span>
+            <div key={i} className="rounded-2xl p-4 sm:p-5 border card-hover" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
+              <span className="text-2xl mb-3 block">{v.icon}</span>
               <h3 className="font-(family-name:--font-syne) font-bold mb-1.5 text-xs sm:text-sm" style={{ color: 'var(--text)' }}>{v.title}</h3>
               <p className="text-xs leading-relaxed" style={{ color: 'var(--text-3)' }}>{v.desc}</p>
             </div>
@@ -296,14 +308,14 @@ export default function AboutPage() {
       </section>
 
       {/* ── FUN FACTS ── */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-12">
         <div className="rounded-3xl p-6 sm:p-10 border" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
-          <h2 className="font-(family-name:--font-syne) text-xl sm:text-2xl font-bold mb-1.5" style={{ color: 'var(--text)' }}>Fun Facts 👾</h2>
-          <p className="text-sm mb-6" style={{ color: 'var(--text-3)' }}>Hal-hal random tentang saya.</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <h2 className="font-(family-name:--font-syne) text-xl font-bold mb-1" style={{ color: 'var(--text)' }}>Fun Facts 👾</h2>
+          <p className="text-sm mb-5" style={{ color: 'var(--text-3)' }}>Hal random tentang saya.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
             {FUN_FACTS.map((f, i) => (
-              <div key={i} className="flex items-center gap-3 p-3 sm:p-4 rounded-xl border" style={{ borderColor: 'var(--border)', background: 'var(--bg)' }}>
-                <span className="text-xl sm:text-2xl shrink-0">{f.emoji}</span>
+              <div key={i} className="flex items-center gap-3 p-3 rounded-xl border" style={{ borderColor: 'var(--border)', background: 'var(--bg)' }}>
+                <span className="text-xl shrink-0">{f.emoji}</span>
                 <span className="text-xs sm:text-sm font-medium" style={{ color: 'var(--text-2)' }}>{f.text}</span>
               </div>
             ))}
@@ -313,20 +325,15 @@ export default function AboutPage() {
 
       {/* ── CTA ── */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
-        <div className="bg-linear-to-br from-blue-600 via-blue-700 to-indigo-700 rounded-3xl p-8 sm:p-12 md:p-16 text-center relative overflow-hidden">
-          <h2 className="font-(family-name:--font-syne) text-2xl sm:text-4xl md:text-5xl font-black text-white mb-4">
-            Yuk Ngobrol!
-          </h2>
-          <p className="text-blue-100 text-sm sm:text-base mb-8 max-w-md mx-auto">
-            Mau kolaborasi, punya proyek, atau sekadar diskusi soal AI dan tech? DM langsung — saya aktif.
-          </p>
+        <div className="bg-linear-to-br from-blue-600 via-blue-700 to-indigo-700 rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden">
+          <h2 className="font-(family-name:--font-syne) text-2xl sm:text-4xl font-black text-white mb-4">Yuk Ngobrol!</h2>
+          <p className="text-blue-100 text-sm sm:text-base mb-7 max-w-md mx-auto">Mau kolaborasi, punya proyek, atau diskusi soal tech?</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-blue-700 px-8 py-3.5 rounded-2xl font-black hover:bg-blue-50 transition-all shadow-xl text-sm sm:text-base">
-              Kirim Pesan
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-blue-700 px-8 py-3.5 rounded-2xl font-black text-sm hover:bg-blue-50 transition-all shadow-xl">
+              Kirim Pesan <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </Link>
-            <a href={PERSONAL.contact.waLink} target="_blank" rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/20 px-8 py-3.5 rounded-2xl font-bold hover:bg-white/20 transition-all text-sm sm:text-base">
+            <a href="https://wa.me/6285811211505?text=Halo%20Fauzan!" target="_blank" rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/20 px-8 py-3.5 rounded-2xl font-bold text-sm hover:bg-white/20 transition-all">
               WhatsApp Langsung
             </a>
           </div>
