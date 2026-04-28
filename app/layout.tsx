@@ -8,6 +8,8 @@ import FloatingActions from '@/components/FloatingActions';
 import CommandPalette from '@/components/CommandPalette';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { ToastProvider } from '@/components/ToastProvider';
+import CursorGlow from '@/components/CursorGlow';
+import EasterEgg from '@/components/EasterEgg';
 
 const syne = Syne({
   subsets: ['latin'],
@@ -27,19 +29,29 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Muhamad Fauzan Al Farikhi | Tech Lead & AI Engineer',
+    default: 'Muhamad Fauzan Al Farikhi | Mahasiswa Informatika & Founder NEXA Tech Labs',
     template: '%s | Muhamad Fauzan Al Farikhi',
   },
-  description: 'Portfolio Muhamad Fauzan Al Farikhi — Founder & CEO NEXA Tech Labs, Tech Lead & AI Engineer yang membangun solusi digital skalabel untuk UMKM Indonesia.',
-  keywords: ['AI Engineer', 'Tech Lead', 'Next.js', 'Machine Learning', 'NEXA Tech Labs', 'Indonesia', 'Fullstack Developer'],
-  authors: [{ name: 'Muhamad Fauzan Al Farikhi' }],
+  description: 'Portfolio Muhamad Fauzan Al Farikhi — Mahasiswa Teknik Informatika Universitas Gunadarma angkatan 2025, Founder & CEO NEXA Tech Labs, peraih 3 medali olimpiade nasional.',
+  keywords: [
+    'Muhamad Fauzan Al Farikhi', 'NEXA Tech Labs', 'Teknik Informatika Gunadarma',
+    'AI Engineer', 'Web Developer', 'Next.js', 'Python', 'Machine Learning',
+    'UMKM Indonesia', 'Portfolio', 'frikhii.my.id',
+  ],
+  authors: [{ name: 'Muhamad Fauzan Al Farikhi', url: 'https://frikhii.my.id' }],
+  creator: 'Muhamad Fauzan Al Farikhi',
   openGraph: {
-    title: 'Muhamad Fauzan Al Farikhi | Tech Lead & AI Engineer',
-    description: 'Founder & CEO NEXA Tech Labs. Building AI-powered digital products.',
+    title: 'Muhamad Fauzan Al Farikhi | Mahasiswa Informatika & Founder NEXA Tech Labs',
+    description: 'Mahasiswa Informatika Gunadarma, Founder NEXA Tech Labs, Top 6 Finalist ICBC 2026, 3 Medali Olimpiade Nasional.',
     type: 'website',
-    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630 }],
+    url: 'https://frikhii.my.id',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Fauzan Portfolio' }],
   },
-  twitter: { card: 'summary_large_image' },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Muhamad Fauzan Al Farikhi | Founder NEXA Tech Labs',
+    description: 'Mahasiswa Informatika Gunadarma & Founder NEXA Tech Labs',
+  },
   robots: { index: true, follow: true },
 };
 
@@ -61,6 +73,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="theme-color" content="#2563eb" />
+        {/* Favicon */}
+        <link rel="icon" href="/favicon.ico" />
       </head>
       <body
         className="flex flex-col min-h-screen font-(family-name:--font-dm-sans) antialiased"
@@ -69,6 +83,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       >
         <ThemeProvider>
           <ToastProvider>
+            <CursorGlow />
+            <EasterEgg />
             <Navbar />
             <main className="grow pb-20 md:pb-0">{children}</main>
             <Footer />
