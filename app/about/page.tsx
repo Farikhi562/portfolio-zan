@@ -88,6 +88,7 @@ function SafeImage({ src, alt, width, height, fill, className, onErr }: {
 
 export default function AboutPage() {
   const [profileErr, setProfileErr] = useState(false);
+  const [selectedAchievement, setSelectedAchievement] = useState<typeof ACHIEVEMENTS[0] | null>(null);
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg)' }}>
@@ -208,12 +209,23 @@ export default function AboutPage() {
         <div className="grid sm:grid-cols-2 gap-3">
           {ACHIEVEMENTS.map(a => (
             <div key={a.id} className="rounded-2xl border card-hover overflow-hidden" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
-              {/* Documentation photo if available */}
+              
+              {/* FITUR BARU: Documentation photo if available (Interactive) */}
               {a.img && (
-                <div className="w-full h-32 overflow-hidden">
-                  <SafeImage src={a.img} alt={a.title} fill className="object-cover" />
-                </div>
+                <button 
+                  onClick={() => setSelectedAchievement(a)}
+                  className="w-full h-32 sm:h-40 overflow-hidden relative group cursor-pointer block border-b"
+                  style={{ borderColor: 'var(--border)' }}
+                >
+                  <SafeImage src={a.img} alt={a.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="text-white text-xs font-bold px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-sm border border-white/20">
+                      🔍 Lihat Detail & Dokumentasi
+                    </span>
+                  </div>
+                </button>
               )}
+
               <div className="flex gap-3 p-4">
                 <span className="text-2xl shrink-0 mt-0.5">{a.badge}</span>
                 <div className="min-w-0 flex-1">
@@ -340,6 +352,64 @@ export default function AboutPage() {
           <div className="absolute -right-10 -bottom-10 w-60 h-60 bg-white/5 rounded-full blur-[80px]" />
         </div>
       </section>
+
+      {/* ── FITUR BARU: ACHIEVEMENT MODAL ── */}
+      {selectedAchievement && (
+        <div 
+          className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in"
+          onClick={() => setSelectedAchievement(null)}
+        >
+          <div 
+            className="relative w-full max-w-3xl max-h-[90vh] rounded-2xl overflow-hidden shadow-2xl flex flex-col bg-slate-900 border border-white/10 animate-scale-in" 
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex justify-between items-center p-4 absolute top-0 w-full z-10 bg-gradient-to-b from-black/80 to-transparent">
+              <span className="text-white font-bold text-sm tracking-widest uppercase">Detail Prestasi</span>
+              <button 
+                onClick={() => setSelectedAchievement(null)} 
+                className="text-white hover:text-white hover:bg-red-500 font-bold bg-white/20 backdrop-blur-sm w-8 h-8 rounded-full flex justify-center items-center transition-all"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Image Section */}
+            {selectedAchievement.img && (
+              <div className="relative w-full h-56 sm:h-80 bg-black shrink-0">
+                <Image src={selectedAchievement.img} alt={selectedAchievement.title} fill className="object-contain" priority />
+              </div>
+            )}
+
+            {/* Explanation Section */}
+            <div className="p-6 overflow-y-auto">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-2xl">{selectedAchievement.badge}</span>
+                <h3 className="font-(family-name:--font-syne) text-xl sm:text-2xl font-bold text-white">
+                  {selectedAchievement.title}
+                </h3>
+              </div>
+              <p className="text-blue-400 font-semibold text-sm mb-1">{selectedAchievement.subtitle}</p>
+              <p className="text-slate-400 text-xs mb-4">{selectedAchievement.org} · {selectedAchievement.year}</p>
+              
+              <div className="mb-4 p-4 rounded-xl bg-slate-800/50 border border-slate-700">
+                <p className="text-slate-200 text-sm leading-relaxed">
+                  {selectedAchievement.desc}
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-1.5">
+                {selectedAchievement.tags.map((t, j) => (
+                  <span key={j} className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
