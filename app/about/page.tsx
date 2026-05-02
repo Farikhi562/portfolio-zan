@@ -26,8 +26,8 @@ const EDUCATION = [
     school: 'SMPN 4 Jakarta', period: '2018 – 2021', city: 'Jakarta',
     img: '/images/smpn4-jakarta.jpg', isLogo: false,
     gpa: null, gpaPeriod: null,
-    desc: 'Sekolah menengah pertama negeri di Jakarta Pusat.',
-    highlights: [],
+    desc: 'Aktif di kegiatan OSIS pada tahun 2019-2020.',
+    highlights: ['Anggota OSIS'],
   },
 ];
 

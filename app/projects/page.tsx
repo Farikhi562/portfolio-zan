@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import ProjectCard from '@/components/ProjectCard';
-import { projectsData } from '@/data/projectsData'; // Pastikan path ini benar
+import { projectsData } from '@/data/projectsData'; 
 
 type FilterSlug = 'all' | 'web' | 'ai-ml' | 'business' | 'system';
 
@@ -18,7 +18,6 @@ export default function ProjectsPage() {
   const [active, setActive] = useState<FilterSlug>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Logika Filter & Search (Upgrade Maksimal)
   const filtered = projectsData.filter(p => {
     const matchesCategory = active === 'all' || p.categorySlug === active;
     const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -37,20 +36,37 @@ export default function ProjectsPage() {
       <section className="relative pt-28 pb-10 overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-40 pointer-events-none" />
         <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-6">
-            <span className="w-6 h-px bg-blue-600" />
-            Portfolio
-          </span>
-          <h1 className="font-(family-name:--font-syne) text-5xl md:text-7xl font-black tracking-tighter text-slate-900 mb-6 leading-[0.9]">
-            Featured<br />
-            <span className="gradient-text">Projects.</span>
-          </h1>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
+            <div>
+              <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-4">
+                <span className="w-6 h-px bg-blue-600" />
+                NEXA Tech Labs Portfolio
+              </span>
+              <h1 className="font-(family-name:--font-syne) text-5xl md:text-7xl font-black tracking-tighter text-slate-900 mb-6 leading-[0.9]">
+                Featured<br />
+                <span className="gradient-text">Projects.</span>
+              </h1>
+            </div>
+            
+            {/* Domain Badge */}
+            <a 
+              href="https://nexatechlabs.my.id" 
+              target="_blank" 
+              className="mb-2 inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all group"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              <span className="text-xs font-bold text-slate-600 group-hover:text-blue-600 transition-colors">nexatechlabs.my.id</span>
+            </a>
+          </div>
+
           <p className="text-slate-500 text-xl max-w-2xl leading-relaxed">
             Eksekusi teknis dari sistem POS enterprise, pipeline AI, 
-            hingga web app production-ready yang digunakan klien nyata.
+            hingga web app production-ready yang di-host di ekosistem <strong>nexatechlabs.my.id</strong>.
           </p>
 
-          {/* Stats row */}
           <div className="flex flex-wrap gap-4 mt-8">
             {[
               { value: `${totalCount}`, label: 'Total Projects',   icon: '📁' },
@@ -69,11 +85,9 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* ── FILTER & SEARCH BAR (UPGRADED) ──────────────── */}
+      {/* ── FILTER & SEARCH BAR ────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 pb-8 z-20 relative">
         <div className="flex flex-col md:flex-row justify-between gap-4 items-start md:items-center bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-          
-          {/* Tabs */}
           <div className="flex flex-wrap gap-2">
             {filters.map(f => {
               const count = f.slug === 'all' ? totalCount : projectsData.filter(p => p.categorySlug === f.slug).length;
@@ -97,7 +111,6 @@ export default function ProjectsPage() {
             })}
           </div>
 
-          {/* Search Input */}
           <div className="relative w-full md:w-64">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
             <input 
@@ -108,7 +121,6 @@ export default function ProjectsPage() {
               className="w-full bg-slate-50 border border-slate-200 text-slate-700 text-sm rounded-lg pl-9 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
             />
           </div>
-
         </div>
       </section>
 
@@ -143,15 +155,23 @@ export default function ProjectsPage() {
             Punya ide eksekusi selanjutnya?
           </h2>
           <p className="text-slate-500 text-lg mb-8 max-w-lg mx-auto">
-            Tim NEXA siap membantu dari discovery, ideasi, hingga deployment production. Praktis dan minim hambatan.
+            Tim NEXA siap membantu dari discovery hingga deployment di <strong>nexatechlabs.my.id</strong>. Praktis dan minim hambatan.
           </p>
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-2 btn-glow bg-blue-600 text-white px-10 py-4 rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-xl shadow-blue-200"
-          >
-            Mulai Diskusi
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="/contact"
+              className="inline-flex items-center gap-2 btn-glow bg-blue-600 text-white px-10 py-4 rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-xl shadow-blue-200"
+            >
+              Mulai Diskusi
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a
+              href="https://nexatechlabs.my.id"
+              className="text-slate-500 font-bold hover:text-blue-600 transition-colors"
+            >
+              Kunjungi Lab Utama
+            </a>
+          </div>
         </div>
       </section>
     </div>
