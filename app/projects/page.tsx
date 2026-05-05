@@ -40,7 +40,7 @@ export default function ProjectsPage() {
             <div>
               <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-4">
                 <span className="w-6 h-px bg-blue-600" />
-                NEXA Tech Labs Portfolio
+                NEXA Campus Ecosystem
               </span>
               <h1 className="font-(family-name:--font-syne) text-5xl md:text-7xl font-black tracking-tighter text-slate-900 mb-6 leading-[0.9]">
                 Featured<br />
@@ -48,23 +48,19 @@ export default function ProjectsPage() {
               </h1>
             </div>
             
-            {/* Domain Badge */}
-            <a 
-              href="https://nexatechlabs.my.id" 
-              target="_blank" 
-              className="mb-2 inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all group"
-            >
+            {/* Campus Status Badge */}
+            <div className="mb-2 inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-2xl shadow-sm">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </span>
-              <span className="text-xs font-bold text-slate-600 group-hover:text-blue-600 transition-colors">nexatechlabs.my.id</span>
-            </a>
+              <span className="text-xs font-bold text-slate-600">Ecosystem Active</span>
+            </div>
           </div>
 
           <p className="text-slate-500 text-xl max-w-2xl leading-relaxed">
             Eksekusi teknis dari sistem POS enterprise, pipeline AI, 
-            hingga web app production-ready yang di-host di ekosistem <strong>nexatechlabs.my.id</strong>.
+            hingga web app production-ready yang terintegrasi di dalam <strong>NEXA Campus Ecosystem</strong>.
           </p>
 
           <div className="flex flex-wrap gap-4 mt-8">
@@ -115,7 +111,7 @@ export default function ProjectsPage() {
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
             <input 
               type="text" 
-              placeholder="Cari proyek..." 
+              placeholder="Cari proyek kampus..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-slate-50 border border-slate-200 text-slate-700 text-sm rounded-lg pl-9 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
@@ -152,10 +148,10 @@ export default function ProjectsPage() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <div className="text-4xl mb-4">🚀</div>
           <h2 className="font-(family-name:--font-syne) text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Punya ide eksekusi selanjutnya?
+            Punya ide inovasi kampus selanjutnya?
           </h2>
           <p className="text-slate-500 text-lg mb-8 max-w-lg mx-auto">
-            Tim NEXA siap membantu dari discovery hingga deployment di <strong>nexatechlabs.my.id</strong>. Praktis dan minim hambatan.
+            Tim NEXA siap membantu dari discovery hingga deployment di dalam <strong>NEXA Campus Ecosystem</strong>. Praktis dan minim hambatan.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
@@ -169,7 +165,7 @@ export default function ProjectsPage() {
               href="https://nexatechlabs.my.id"
               className="text-slate-500 font-bold hover:text-blue-600 transition-colors"
             >
-              Kunjungi Lab Utama
+              Kunjungi Portal Utama
             </a>
           </div>
         </div>
