@@ -356,7 +356,7 @@ export default function AboutPage() {
       {/* ── FITUR BARU: ACHIEVEMENT MODAL ── */}
       {selectedAchievement && (
         <div 
-          className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in"
+          className="fixed inset-0 z-999 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in"
           onClick={() => setSelectedAchievement(null)}
         >
           <div 
@@ -364,7 +364,7 @@ export default function AboutPage() {
             onClick={e => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex justify-between items-center p-4 absolute top-0 w-full z-10 bg-gradient-to-b from-black/80 to-transparent">
+            <div className="flex justify-between items-center p-4 absolute top-0 w-full z-10 bg-linear-to-b from-black/80 to-transparent">
               <span className="text-white font-bold text-sm tracking-widest uppercase">Detail Prestasi</span>
               <button 
                 onClick={() => setSelectedAchievement(null)} 
