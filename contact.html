@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontak — Fauzan Alfa</title>
+<meta name="description" content="Hubungi Fauzan Alfa (@frikhiii).">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="page-transition show" id="pageTransition"><span class="mark">frikhiii</span></div>
+<div class="grain"></div>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="home.html" class="logo-mark">frikhiii<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="about.html">Tentang</a></li>
+      <li><a href="projects.html">Proyek</a></li>
+      <li><a href="contact.html">Kontak</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Hubungi Saya</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Buka menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-panel" id="mobilePanel">
+  <a href="home.html">Home</a>
+  <a href="about.html">Tentang</a>
+  <a href="projects.html">Proyek</a>
+  <a href="contact.html">Kontak</a>
+</div>
+
+<main>
+
+  <section style="padding-top:calc(var(--nav-h) + 60px); padding-bottom:0;">
+    <div class="wrap">
+      <div class="eyebrow reveal">// kontak</div>
+      <h1 class="section-title reveal" style="max-width:16ch; font-size:clamp(38px,6vw,64px);">
+        Ngobrol yuk soal proyek lo.
+      </h1>
+      <p class="body-lg reveal" style="margin-top:20px; max-width:48ch;">
+        Cara tercepat buat nyampe ke gue ada di bawah ini. <span class="todo">TODO: isi kalimat pembuka kontak</span>
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="contact-grid reveal">
+        <a href="mailto:fauzanalfa36@gmail.com" class="contact-card">
+          <div class="icon">✉️</div>
+          <div class="label">Email</div>
+          <div class="value">fauzanalfa36@gmail.com</div>
+        </a>
+        <a href="https://github.com/Farikhi562" target="_blank" rel="noopener" class="contact-card">
+          <div class="icon">🖥️</div>
+          <div class="label">GitHub</div>
+          <div class="value">Farikhi562</div>
+        </a>
+        <a href="https://instagram.com/frikhiii" target="_blank" rel="noopener" class="contact-card">
+          <div class="icon">📸</div>
+          <div class="label">Instagram</div>
+          <div class="value">@frikhiii</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">// kirim pesan</div>
+          <h2 class="section-title">Atau isi form ini.</h2>
+        </div>
+      </div>
+
+      <form class="reveal" id="contactForm" style="max-width:640px; display:flex; flex-direction:column; gap:18px;">
+        <div>
+          <label for="cf-name" class="eyebrow" style="margin-bottom:8px;">nama</label>
+          <input id="cf-name" name="name" type="text" required placeholder="Nama kamu"
+            style="width:100%; background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px; color:var(--bone); font-family:var(--font-body); font-size:15px;">
+        </div>
+        <div>
+          <label for="cf-email" class="eyebrow" style="margin-bottom:8px;">email</label>
+          <input id="cf-email" name="email" type="email" required placeholder="email@kamu.com"
+            style="width:100%; background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px; color:var(--bone); font-family:var(--font-body); font-size:15px;">
+        </div>
+        <div>
+          <label for="cf-message" class="eyebrow" style="margin-bottom:8px;">pesan</label>
+          <textarea id="cf-message" name="message" rows="5" required placeholder="Ceritain proyek atau ide kamu..."
+            style="width:100%; background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px; color:var(--bone); font-family:var(--font-body); font-size:15px; resize:vertical;"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Kirim via Email →</button>
+        <p class="mono-tag" style="align-self:flex-start;">membuka aplikasi email default kamu</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="logo-mark">frikhiii<span>.</span></div>
+      <div class="footer-links">
+        <a href="mailto:fauzanalfa36@gmail.com">fauzanalfa36@gmail.com</a>
+        <a href="https://github.com/Farikhi562" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://instagram.com/frikhiii" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <hr class="divider">
+    <div class="footer-bottom" style="margin-top:24px;">
+      <span>© 2026 Fauzan Alfa. Semua hak dilindungi.</span>
+      <span>Dibuat dengan niat &amp; kopi.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/nav.js"></script>
+<script src="js/contact.js"></script>
+</body>
+</html>

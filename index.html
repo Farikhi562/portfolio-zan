@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@frikhiii — sebelum masuk, kenalan dulu yuk</title>
+<meta name="description" content="Portfolio Fauzan Alfa (@frikhiii).">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/intro.css">
+</head>
+<body class="intro-body">
+
+  <div class="intro-backdrop">
+    <div class="bg-label">FRIKHIII.DEV &nbsp;/&nbsp; simulasi profil, bukan aplikasi Instagram sungguhan</div>
+  </div>
+
+  <a href="home.html" class="skip-btn" id="skipBtn">Lewati intro →</a>
+
+  <div class="phone">
+
+    <!-- ============ SPLASH ============ -->
+    <div class="screen active" id="screen-splash">
+      <div class="splash-logo">frikhiii</div>
+    </div>
+
+    <!-- ============ PROFILE ============ -->
+    <div class="screen" id="screen-profile">
+      <div class="status-bar"><span>9:41</span><span>●●● 📶 🔋</span></div>
+
+      <div class="ig-topbar">
+        <div class="uname">frikhiii</div>
+        <div class="icons"><span>🔔</span><span>☰</span></div>
+      </div>
+
+      <div class="profile-head">
+        <div class="avatar">
+          <img src="https://placehold.co/200x200/16161D/4DE8C0?text=F" alt="Foto profil placeholder">
+        </div>
+        <div class="stats">
+          <div><strong>1</strong><span>Post</span></div>
+          <div><strong>—</strong><span>Followers</span></div>
+          <div><strong>—</strong><span>Following</span></div>
+        </div>
+      </div>
+
+      <div class="profile-bio">
+        <div class="name">Fauzan Alfa</div>
+        <div class="bio-text">
+          🛠️ Developer &amp; Creator<br>
+          <span class="todo">TODO: isi bio</span>
+        </div>
+      </div>
+
+      <div class="profile-actions">
+        <button>Ikuti</button>
+        <button class="msg-btn pulse" id="msgBtn">Kirim Pesan</button>
+      </div>
+
+      <div class="grid-tabs"><div class="active">▦</div></div>
+
+      <div class="post-grid" id="postGrid">
+        <div class="cell"><img src="https://placehold.co/400x400/16161D/F2F1ED?text=Post+1" alt="Post 1 placeholder"></div>
+        <div class="cell empty">SOON</div>
+        <div class="cell empty">SOON</div>
+        <div class="cell empty">SOON</div>
+        <div class="cell empty">SOON</div>
+        <div class="cell empty">SOON</div>
+      </div>
+    </div>
+
+    <!-- ============ SINGLE POST ============ -->
+    <div class="screen" id="screen-post">
+      <div class="status-bar"><span>9:41</span><span>●●● 📶 🔋</span></div>
+
+      <div class="post-header">
+        <div class="avatar-sm"><img src="https://placehold.co/100x100/16161D/4DE8C0?text=F" alt=""></div>
+        <div class="who">frikhiii</div>
+        <div>⋯</div>
+      </div>
+      <div class="post-photo">
+        <img src="https://placehold.co/800x800/16161D/F2F1ED?text=Post+1" alt="Foto post placeholder">
+      </div>
+      <div class="post-actions">
+        <span class="heart" id="heartIcon">🤍</span>
+        <span>💬</span>
+        <span>✈️</span>
+      </div>
+      <div class="post-likes" id="likeCount">— suka</div>
+      <div class="post-caption"><b>frikhiii</b><span class="todo">TODO: isi caption</span></div>
+      <div class="post-comments-link">Lihat semua — komentar</div>
+    </div>
+
+    <!-- ============ DM ============ -->
+    <div class="screen" id="screen-dm">
+      <div class="status-bar"><span>9:41</span><span>●●● 📶 🔋</span></div>
+      <div class="dm-header">
+        <span>←</span>
+        <div class="avatar-sm"><img src="https://placehold.co/100x100/16161D/4DE8C0?text=F" alt=""></div>
+        <div>
+          <div class="who">frikhiii</div>
+          <div class="status">Online</div>
+        </div>
+      </div>
+
+      <div class="dm-body" id="dmBody"></div>
+
+      <div class="dm-options hidden" id="dmOptions">
+        <div class="opt-hint">pilih salah satu balasan ↓</div>
+      </div>
+
+      <div class="dm-cta hidden" id="dmCta">
+        <button id="dmCtaBtn">Buka Portofolio Gue →</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-transition" id="pageTransition"><span class="mark">frikhiii</span></div>
+
+  <script src="js/intro.js"></script>
+</body>
+</html>
